@@ -1,0 +1,14 @@
+.hide {
+    display: none;
+}
+
+.pageWrapper {
+    flex: 1;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.pageContainer {
+    background-color: var(--bg-color);
+    height: 100%;
+}
