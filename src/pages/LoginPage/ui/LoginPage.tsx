@@ -12,6 +12,7 @@ const LoginPage: FC<LoginPageProps> = () => {
     return (
         <div className={classNames(classes.loginPage)}>
             <Logo />
+            test
         </div>
     );
 };
