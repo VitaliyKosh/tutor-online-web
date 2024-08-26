@@ -10,15 +10,15 @@ export default defineConfig({
     plugins: [
         react(),
         // VitePWA({
-        //     // injectRegister: 'auto',
-        //     // registerType: 'autoUpdate',
-        //     // workbox: {
-        //     //     clientsClaim: true,
-        //     //     skipWaiting: true,
-        //     // },
-        //     // devOptions: {
-        //     //     enabled: true,
-        //     // },
+            // injectRegister: 'auto',
+            // registerType: 'autoUpdate',
+            // workbox: {
+            //     clientsClaim: true,
+            //     skipWaiting: true,
+            // },
+            // devOptions: {
+            //     enabled: true,
+            // },
         // }),
     ],
     resolve: {
