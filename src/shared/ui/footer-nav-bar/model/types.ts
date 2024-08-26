@@ -1,9 +1,13 @@
 import { RouteNames } from '@/shared/consts/paths';
-import { ReactNode } from 'react';
+import { FC } from 'react';
 
 export interface FooterNavBarLink {
     key: string;
     to: RouteNames;
-    content: ReactNode;
+    Content: FooterNavBarContent;
     label: string;
 }
+
+export type FooterNavBarContentProps = { active: boolean };
+
+export type FooterNavBarContent = FC<FooterNavBarContentProps>;

@@ -6,18 +6,18 @@
  * @returns {Uint8Array} - The converted Uint8Array.
  */
 const urlBase64ToUint8Array = (base64String: string): Uint8Array => {
-    const padding = '='.repeat((4 - (base64String.length % 4)) % 4)
-    const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/')
+    const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+    const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
 
-    const rawData = window.atob(base64)
-    const outputArray = new Uint8Array(rawData.length)
+    const rawData = window.atob(base64);
+    const outputArray = new Uint8Array(rawData.length);
 
     for (let i = 0; i < rawData.length; ++i) {
-        outputArray[i] = rawData.charCodeAt(i)
+        outputArray[i] = rawData.charCodeAt(i);
     }
 
-    return outputArray
-}
+    return outputArray;
+};
 
 /**
  * Enumeration of potential error codes.
@@ -28,7 +28,7 @@ export enum Errors {
     ServiceWorkerAndPushManagerNotSupported = 'ServiceWorkerAndPushManagerNotSupported',
     PushManagerUnavailable = 'PushManagerUnavailable',
     ExistingSubscription = 'ExistingSubscription',
-    Unknown = 'Unknown'
+    Unknown = 'Unknown',
 }
 
 /**
@@ -37,7 +37,7 @@ export enum Errors {
  * @interface
  */
 interface SubscribeProps {
-    publicKey: string
+    publicKey: string;
 }
 
 /**
@@ -58,13 +58,13 @@ export const useSubscribe = ({ publicKey }: SubscribeProps) => {
      */
     const getSubscription = async (): Promise<PushSubscription> => {
         if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
-            throw new Error(Errors.ServiceWorkerAndPushManagerNotSupported)
+            throw new Error(Errors.ServiceWorkerAndPushManagerNotSupported);
         }
 
-        const registration = await navigator.serviceWorker.ready
+        const registration = await navigator.serviceWorker.ready;
 
         if (!registration.pushManager) {
-            throw new Error(Errors.PushManagerUnavailable)
+            throw new Error(Errors.PushManagerUnavailable);
         }
 
         // const existingSubscription = await registration.pushManager.getSubscription()
@@ -73,12 +73,12 @@ export const useSubscribe = ({ publicKey }: SubscribeProps) => {
         //     throw new Error(Errors.ExistingSubscription)
         // }
 
-        const convertedVapidKey = urlBase64ToUint8Array(publicKey)
+        const convertedVapidKey = urlBase64ToUint8Array(publicKey);
         return await registration.pushManager.subscribe({
             applicationServerKey: convertedVapidKey,
-            userVisibleOnly: true
-        })
-    }
+            userVisibleOnly: true,
+        });
+    };
 
-    return { getSubscription }
-}
+    return { getSubscription };
+};

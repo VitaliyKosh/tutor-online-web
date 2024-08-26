@@ -27,5 +27,25 @@
 
     /* colors */
 
+    --text-primary: rgb(117 112 99);
+    --text-primary-active: rgb(91, 87, 76);
+    /* --text-secondary: rgb(198, 193, 181); */
+    /* --text-active: rgb(0, 0, 0); */
+    /* --text-inverse: rgb(254 254 254); */
+    /* --text-alert: #f53c14; */
+    /* --text-warning: #dabc48; */
+    /* --text-success: #4caf50; */
     
+    /* --bg-primary: rgb(237 237 237); */
+    /* --bg-base: #fefefe; */
+    /* --bg-blocks: rgb(255, 255, 255); */
+    /* --bg-blocks-hover: rgb(243, 243, 243); */
+    /* --bg-blocks-active: rgb(238, 238, 238); */
+    /* --bg-shadow: rgba(0, 0, 0, 0.2); */
+    
+    /* --separator: #757f8a; */
+    /* --separator-alert: #f53c14; */
+    /* --ctrl-Math: rgb(242 210 154); */
+    /* --ctrl-Math-secondary: rgb(146 159 132); */
+    /* --ctrl-Math-third: rgb(137 162 167); */
 }

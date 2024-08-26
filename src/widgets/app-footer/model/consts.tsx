@@ -2,8 +2,8 @@ import { FooterTabs } from '@/entities/app-footer';
 import { RouteNames } from '@/shared/consts/paths';
 import { FooterNavBarLink } from '@/shared/ui/footer-nav-bar';
 import { faHouse, faGraduationCap, faBookBookmark } from '@fortawesome/free-solid-svg-icons';
-import { ReactNode } from 'react';
 import { AppFooterIcon } from '../ui/icon';
+import { FooterNavBarContent } from '@/shared/ui/footer-nav-bar/model/types';
 
 const footerText: Record<FooterTabs, string> = {
     [FooterTabs.MAIN]: 'Главная',
@@ -13,12 +13,12 @@ const footerText: Record<FooterTabs, string> = {
     [FooterTabs.MAIN_MENU]: 'Меню',
 };
 
-const footerIcons: Record<FooterTabs, ReactNode> = {
-    [FooterTabs.MAIN]: <AppFooterIcon icon={faHouse} />,
-    [FooterTabs.STUDY]: <AppFooterIcon icon={faBookBookmark} />,
-    [FooterTabs.PROGRESS]: <AppFooterIcon icon={faGraduationCap} />,
-    [FooterTabs.TESTS]: <AppFooterIcon icon={faGraduationCap} />,
-    [FooterTabs.MAIN_MENU]: <AppFooterIcon icon={faBookBookmark} />,
+const footerIcons: Record<FooterTabs, FooterNavBarContent> = {
+    [FooterTabs.MAIN]: ({ active }) => <AppFooterIcon icon={faHouse} active={active} />,
+    [FooterTabs.STUDY]: ({ active }) => <AppFooterIcon icon={faBookBookmark} active={active} />,
+    [FooterTabs.PROGRESS]: ({ active }) => <AppFooterIcon icon={faGraduationCap} active={active} />,
+    [FooterTabs.TESTS]: ({ active }) => <AppFooterIcon icon={faGraduationCap} active={active} />,
+    [FooterTabs.MAIN_MENU]: ({ active }) => <AppFooterIcon icon={faBookBookmark} active={active} />,
 };
 
 const footerRoutes: Record<FooterTabs, RouteNames> = {
@@ -32,6 +32,6 @@ const footerRoutes: Record<FooterTabs, RouteNames> = {
 export const footerLinks: FooterNavBarLink[] = Object.values(FooterTabs).map((tab) => ({
     key: tab,
     to: footerRoutes[tab],
-    content: footerIcons[tab],
+    Content: footerIcons[tab],
     label: footerText[tab],
 }));

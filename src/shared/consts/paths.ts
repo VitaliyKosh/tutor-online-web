@@ -8,10 +8,10 @@ export enum RouteNames {
 }
 
 export const routePaths: Record<RouteNames, string> = {
-    [RouteNames.MAIN]: '/',
-    [RouteNames.ERROR]: '/error',
-    [RouteNames.STUDY]: '/study',
-    [RouteNames.PROGRESS]: '/progress',
-    [RouteNames.TESTS]: '/tests',
-    [RouteNames.MAIN_MENU]: '/mainMenu',
+    [RouteNames.MAIN]: '/app',
+    [RouteNames.ERROR]: '/app/error',
+    [RouteNames.STUDY]: '/app/study',
+    [RouteNames.PROGRESS]: '/app/progress',
+    [RouteNames.TESTS]: '/app/tests',
+    [RouteNames.MAIN_MENU]: '/app/mainMenu',
 };

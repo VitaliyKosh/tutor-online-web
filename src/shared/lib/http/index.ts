@@ -1,7 +1,7 @@
 import axios, { AxiosHeaders, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 import { LocalStorageItems } from '@/shared/types/local-storage-items';
 
-export const API_URL = 'process.env.API_URL';
+export const API_URL = 'http://localhost:5010/api/';
 
 const $api = axios.create({
     withCredentials: true,

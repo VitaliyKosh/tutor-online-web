@@ -24,19 +24,23 @@ export const FooterNavBar = ({
             })}
         >
             <ul className={s.linksWrapper}>
-                {footerLinks.map((link) => (
-                    <li key={link.key} className={s.linkLi}>
-                        <Link
-                            to={paths.getRoutePath(link.to)}
-                            className={classNames(s.link, {
-                                [s.activeLink]: link.key === activeTab,
-                            })}
-                        >
-                            {link.content}
-                            <div className={s.linkLabel}>{link.label}</div>
-                        </Link>
-                    </li>
-                ))}
+                {footerLinks.map((link) => {
+                    const Content = link.Content;
+
+                    return (
+                        <li key={link.key} className={s.linkLi}>
+                            <Link
+                                to={paths.getRoutePath(link.to)}
+                                className={classNames(s.link, {
+                                    [s.activeLink]: link.key === activeTab,
+                                })}
+                            >
+                                <Content active={link.key === activeTab} />
+                                <div className={s.linkLabel}>{link.label}</div>
+                            </Link>
+                        </li>
+                    );
+                })}
             </ul>
         </nav>
     );

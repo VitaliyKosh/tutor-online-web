@@ -5,8 +5,6 @@ import App from '@/app/app';
 import React from 'react';
 import { ErrorBoundary } from './app/providers/ErrorBoundary';
 
-console.log(123);
-
 createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <ErrorBoundary>
