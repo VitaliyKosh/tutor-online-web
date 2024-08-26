@@ -25,7 +25,8 @@ const urlBase64ToUint8Array = (base64String: string): Uint8Array => {
  * @enum {string}
  */
 export enum Errors {
-    ServiceWorkerAndPushManagerNotSupported = 'ServiceWorkerAndPushManagerNotSupported',
+    ServiceWorkerNotSupported = 'ServiceWorkerNotSupported',
+    PushManagerNotSupported = 'PushManagerNotSupported',
     PushManagerUnavailable = 'PushManagerUnavailable',
     ExistingSubscription = 'ExistingSubscription',
     Unknown = 'Unknown',
@@ -57,8 +58,12 @@ export const useSubscribe = ({ publicKey }: SubscribeProps) => {
      * @throws {ErrorObject} - An object containing an error code.
      */
     const getSubscription = async (): Promise<PushSubscription> => {
-        if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
-            throw new Error(Errors.ServiceWorkerAndPushManagerNotSupported);
+        if (!('serviceWorker' in navigator)) {
+            throw new Error(Errors.ServiceWorkerNotSupported);
+        }
+
+        if (!('PushManager' in window)) {
+            throw new Error(Errors.PushManagerNotSupported);
         }
 
         const registration = await navigator.serviceWorker.ready;
