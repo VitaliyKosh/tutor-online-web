@@ -1,6 +1,7 @@
 import { AboutPage } from '@/pages/AboutPage';
 import { LoginPage } from '@/pages/LoginPage';
-import { MainPage } from '@/pages/MainPage';
+import { MainPage } from '@/pages/main';
+import NoPWAPage from '@/pages/no-pwa/ui';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ResetPassPage } from '@/pages/ResetPassPage';
 import NotificationsPage from '@/pages/Settings/NotificationsPage/ui/NotificationsPage';
@@ -21,13 +22,13 @@ export interface IRouteProps extends PathRouteProps {
 export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.RESET_PASS]: '/app/resetPassword/:link',
     [AppRoutes.LOGIN]: '/app/login',
-    [AppRoutes.NO_PWA]: '/app/*',
+    [AppRoutes.NO_PWA]: '/*',
 };
 
 export const routeNames: Record<AppRoutes, string> = {
     [AppRoutes.RESET_PASS]: 'Сброс пароля',
     [AppRoutes.LOGIN]: 'Авторизация',
-    [AppRoutes.NO_PWA]: '/app',
+    [AppRoutes.NO_PWA]: '/',
 };
 
 export const routeConfig: Record<AppRoutes, IRouteProps> = {
@@ -47,7 +48,7 @@ export const routeConfig: Record<AppRoutes, IRouteProps> = {
         path: RoutePath.NO_PWA,
         title: routeNames.NO_PWA,
         showMenu: false,
-        element: <LoginPage />,
+        element: <NoPWAPage />,
     },
 };
 

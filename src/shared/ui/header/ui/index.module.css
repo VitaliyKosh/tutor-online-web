@@ -1,0 +1,84 @@
+.header {
+  /* background-color: $color-bg-primary; */
+  border-bottom-width: 0.33px;
+  /* border-bottom-color: $color-separator; */
+  border-bottom-style: solid;
+}
+
+.headerTitleBlock {
+  height: 42px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+}
+
+.backButton {
+  height: 100%;
+  padding: 9px 16px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+}
+
+.filtersButtonWrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.filtersButton {
+  position: relative;
+  height: 100%;
+  padding: 9px 16px;
+  width: fit-content;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.filtersCounter {
+  position: absolute;
+  right: 12px;
+  top: 7px;
+  min-width: 12px;
+  padding: 0 2px;
+  height: 12px;
+  /* background-color: $color-text-alert; */
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* @include caption-s-font($color-text-primary-buttons); */
+}
+
+.arrowLeft {
+  /* color: $color-input-icons; */
+  width: 24px;
+  height: 24px;
+
+  & > path {
+    fill: currentColor;
+  }
+}
+
+.filters {
+  width: 24px;
+  height: 24px;
+}
+
+.rightAccessory {
+  height: 100%;
+  padding: 9px 16px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.headerTitle {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  /* @include main-font($fs-s, $color-text-primary, $fw-500); */
+}

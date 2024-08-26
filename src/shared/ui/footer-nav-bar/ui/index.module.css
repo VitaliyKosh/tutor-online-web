@@ -1,0 +1,57 @@
+.footerNavBar {
+  /* background-color: $color-bg-base; */
+  box-shadow: 0 0 0px 0.5px #00000020;
+  position: relative;
+}
+
+.iphonePadding {
+  padding-bottom: var(--iphone-x-padding)
+}
+
+.linksWrapper {
+  height: var(--footer-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.linkLi {
+  flex: 1;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.linkIcon {
+  height: 23px;
+  width: 23px;
+  /* color: $color-text-footer; */
+}
+
+.activeLinkIcon > path {
+  fill: currentColor;
+}
+
+.linkLabel {
+  /* @include caption-m-font($color-text-footer); */
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+.activeLink {
+  .linkIcon {
+    /* color: $color-text-action; */
+  }
+
+  .linkLabel {
+    /* color: $color-text-action; */
+  }
+}
