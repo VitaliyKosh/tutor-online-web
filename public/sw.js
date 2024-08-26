@@ -1,5 +1,8 @@
 self.addEventListener('push', function (event) {
     const data = event.data.json()
+
+    console.log('push', data);
+
     const options = {
         body: data.message,
         icon: 'icons/icon-72x72.png',
