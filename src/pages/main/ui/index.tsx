@@ -9,13 +9,8 @@ interface MainPageProps {
 }
 
 const MainPage: FC<MainPageProps> = () => {
-    const [loadingSubscribe, setLoadingSubscribe] = useState<boolean>(false);
-    const [loadingPush, setLoadingPush] = useState<boolean>(false);
     const [pushId, setPushId] = useState<string>('');
-    const [message, setMessage] = useState<string>('World');
-    const [title, setTitle] = useState<string>('Hello');
     const [subscribeId, setSubscribeId] = useState<string>('');
-    const [showSubscribe, setShowSubscribe] = useState<boolean>(true);
 
     const [error, setError] = useState<object>();
 
@@ -35,7 +30,6 @@ const MainPage: FC<MainPageProps> = () => {
 
     const onSubmitSubscribe = useCallback(async () => {
         console.log(1);
-        setLoadingSubscribe(true);
         try {
             const subscription = await getSubscription();
             await $api.post('/subscribe', {
@@ -46,29 +40,25 @@ const MainPage: FC<MainPageProps> = () => {
         } catch (e) {
             console.warn(e);
             console.log('Details console');
-            setError(e);
+            setError(e as any);
         } finally {
-            setLoadingSubscribe(false);
             console.log('finally');
         }
     }, [getSubscription]);
 
     const onSubmitPush = useCallback(async () => {
-        setLoadingPush(true);
         try {
             await $api.post('/send', {
-                message,
-                title,
+                message: 'm',
+                title: 't',
                 id: pushId,
             });
             console.log('Push success');
         } catch (e) {
             console.log('Details console');
-            setError(e);
-        } finally {
-            setLoadingPush(false);
+            setError(e as any);
         }
-    }, [pushId, message, title]);
+    }, [pushId]);
 
     return (
         <div>
