@@ -32,6 +32,9 @@ const MainPage: FC<MainPageProps> = () => {
         console.log(1);
         try {
             const subscription = await getSubscription();
+
+            console.log(subscription);
+
             await $api.post('/subscribe', {
                 subscription: subscription,
                 id: subscribeId,
