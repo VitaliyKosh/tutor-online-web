@@ -493,7 +493,7 @@ export default defineConfig({
 
             srcDir: path.resolve(__dirname, 'resources/js/'),
             filename: 'serviceWorker.js',
-            strategies: 'injectManifest',
+            // strategies: 'generateSW',
 
             devOptions: {
                 enabled: true,
