@@ -1,3 +1,5 @@
+import { useCallback } from 'react';
+
 /**
  * Converts a base64 string to a Uint8Array.
  *
@@ -72,11 +74,11 @@ export const useSubscribe = ({ publicKey }: SubscribeProps) => {
             throw new Error(Errors.PushManagerUnavailable);
         }
 
-        // const existingSubscription = await registration.pushManager.getSubscription()
+        const existingSubscription = await registration.pushManager.getSubscription();
 
-        // if (existingSubscription) {
-        //     throw new Error(Errors.ExistingSubscription)
-        // }
+        if (existingSubscription) {
+            return existingSubscription;
+        }
 
         const convertedVapidKey = urlBase64ToUint8Array(publicKey);
         return await registration.pushManager.subscribe({
@@ -85,5 +87,5 @@ export const useSubscribe = ({ publicKey }: SubscribeProps) => {
         });
     };
 
-    return { getSubscription };
+    return { getSubscription: useCallback(getSubscription, [publicKey]) };
 };
