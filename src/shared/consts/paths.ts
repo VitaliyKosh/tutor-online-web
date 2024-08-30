@@ -1,17 +1,29 @@
+export enum GlobalRouteNames {
+    NO_PWA = 'NO_PWA',
+}
+
 export enum RouteNames {
     MAIN = 'MAIN',
-    ERROR = 'ERROR',
     STUDY = 'STUDY',
     PROGRESS = 'PROGRESS',
     TESTS = 'TESTS',
     MAIN_MENU = 'MAIN_MENU',
+    ERROR = 'ERROR',
+    LOGIN = 'LOGIN',
+    ERROR_404 = 'ERROR_404',
+    NOT_ACTIVATED = 'NOT_ACTIVATED',
 }
 
-export const routePaths: Record<RouteNames, string> = {
+export const routePaths: Record<RouteNames | GlobalRouteNames, string> = {
+    [GlobalRouteNames.NO_PWA]: '/',
+    // app
     [RouteNames.MAIN]: '/app',
-    [RouteNames.ERROR]: '/app/error',
     [RouteNames.STUDY]: '/app/study',
     [RouteNames.PROGRESS]: '/app/progress',
     [RouteNames.TESTS]: '/app/tests',
     [RouteNames.MAIN_MENU]: '/app/mainMenu',
+    [RouteNames.ERROR]: '/app/error',
+    [RouteNames.LOGIN]: '/app/login',
+    [RouteNames.ERROR_404]: '/app/notFound',
+    [RouteNames.NOT_ACTIVATED]: '/app/notActivated',
 };
