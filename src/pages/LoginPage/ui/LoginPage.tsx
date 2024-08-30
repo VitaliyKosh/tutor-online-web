@@ -66,6 +66,7 @@ const LoginPage: FC<LoginPageProps> = () => {
                 <input type='submit' />
             </form>
             <button onClick={onLogout}>logout</button>
+            {APP_VERSION}
         </div>
     );
 };
