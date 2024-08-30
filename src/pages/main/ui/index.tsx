@@ -6,7 +6,13 @@ interface MainPageProps {
 }
 
 const MainPage: FC<MainPageProps> = () => {
-    return <div>{/* <button onClick={onSubmitSubscribe}>onSubmitSubscribe</button> */}</div>;
+    console.log(import.meta.env);
+    
+    return (
+        <div>
+            {APP_VERSION} {import.meta.env.VITE_API_URL}
+        </div>
+    );
 };
 
 export default MainPage;

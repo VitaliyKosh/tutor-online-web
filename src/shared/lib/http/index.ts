@@ -1,8 +1,7 @@
 import axios, { AxiosHeaders, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 import { LocalStorageItems } from '@/shared/types/local-storage-items';
 
-export const API_URL = 'https://math.koshelkov.ru/api';
-// export const API_URL = 'http://localhost:5010/api';
+export const API_URL = import.meta.env.VITE_API_URL;
 
 const $api = axios.create({
     withCredentials: true,
