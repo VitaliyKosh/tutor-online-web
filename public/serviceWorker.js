@@ -16,9 +16,10 @@ self.addEventListener('push', function (e) {
     if (e.data) {
         let message = e.data.json();
         e.waitUntil(self.registration.showNotification(message.title, {
-            body: message.body,
-            icon: message.icon,
-            actions: message.actions
+            // body: message.body,
+            // icon: message.icon,
+            // actions: message.actions
+            ...message
         }));
     }
 });

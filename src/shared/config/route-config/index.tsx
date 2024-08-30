@@ -2,7 +2,7 @@ import { AboutPage } from '@/pages/AboutPage';
 import { LoginPage } from '@/pages/LoginPage';
 import { MainPage } from '@/pages/main';
 import NoPWAPage from '@/pages/no-pwa/ui';
-import { NotFoundPage } from '@/pages/NotFoundPage';
+import { NotFoundPage } from '@/pages/not-found';
 import { ResetPassPage } from '@/pages/ResetPassPage';
 import NotificationsPage from '@/pages/Settings/NotificationsPage/ui/NotificationsPage';
 import { SettingsPage } from '@/pages/Settings/SettingsPage';
