@@ -10,11 +10,11 @@ const App: FC = () => {
     return (
         <StoreProvider>
             <AuthProvider>
-                {/* <PushProvider> */}
-                <GlobalLoader>
-                    <RouterProvider />
-                </GlobalLoader>
-                {/* </PushProvider> */}
+                <PushProvider>
+                    <GlobalLoader>
+                        <RouterProvider />
+                    </GlobalLoader>
+                </PushProvider>
             </AuthProvider>
         </StoreProvider>
     );

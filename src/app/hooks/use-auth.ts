@@ -1,4 +1,4 @@
-import AuthService from '@/shared/api-services/AuthService';
+import AuthService from '@/shared/api-services/auth-service';
 import { useOnce } from '@/shared/hooks/use-onse';
 import { getCookie } from '@/shared/lib/helpers/get-cookie';
 import { signIn } from '@/shared/store/slices/user';

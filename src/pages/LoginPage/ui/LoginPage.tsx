@@ -1,7 +1,7 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import classes from './LoginPage.module.css';
 import classNames from 'classnames';
-import AuthService from '@/shared/api-services/AuthService';
+import AuthService from '@/shared/api-services/auth-service';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { paths } from '@/shared/lib/path';
 import { RouteNames } from '@/shared/consts/paths';
