@@ -1,10 +1,12 @@
 import ModuleService from '@/shared/api-services/module-service';
 import { PC } from '@/shared/types/page';
 import { ModuleList } from '@/shared/ui/module-list';
+import { Text } from '@/shared/ui/text';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Module } from 'tutor-online-global-shared';
 import s from './index.module.css';
+import { ModulePageFallback } from './fallback';
 
 const ModulePage: PC = ({ useHeaderTitle, params }) => {
     const location = useLocation();
@@ -58,15 +60,28 @@ const ModulePage: PC = ({ useHeaderTitle, params }) => {
 
     const submodules = module?.modules;
 
+    if (moduleLoading) {
+        return <ModulePageFallback />;
+    }
+
     return (
         <div className={s.page}>
-            {moduleLoading ? (
-                <div>Loading</div>
-            ) : (
-                <div>
-                    {submodules && <ModuleList modules={modules} modulesLoading={modulesLoading} skeletonCount={hasState ? state.module.modules?.length : 3} />}
-                </div>
-            )}
+            <div>
+                {submodules && (
+                    <>
+                        <div className={s.modulesTitle}>
+                            <Text textType='title' textSize={'s'}>
+                                Модули
+                            </Text>
+                        </div>
+                        <ModuleList
+                            modules={modules}
+                            modulesLoading={modulesLoading}
+                            skeletonCount={hasState ? state.module.modules?.length : 3}
+                        />
+                    </>
+                )}
+            </div>
         </div>
     );
 };
