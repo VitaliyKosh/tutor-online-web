@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, useEffect, useRef, useState } from 'react';
+import { FC, PropsWithChildren, useEffect, useState } from 'react';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
 import { useSubscribe } from '@/shared/hooks/use-subscribe';
 import PushService from '@/shared/api-services/push-service';
@@ -11,6 +11,8 @@ const getDeviceId = async () => {
     return result.visitorId;
 };
 
+const SHOW_ALERTS = false;
+
 const PUBLIC_KEY =
     'BLpOhkXw2ZdEAAc16w-oJV3E4QoztmsKl-awkf6-bA4DYcjgXDBU2zLPE8lMqcw6P2ihgmovm-cpGW8uBirzKqg';
 
@@ -21,14 +23,10 @@ export const PushProvider: FC<PropsWithChildren> = ({ children }) => {
     const [subscribed, setSubscribed] = useState(false);
 
     useEffect(() => {
-        const onUserAction = async () => {
-            if (subscribed) {
-                return;
+        const subscribe = async () => {
+            if (SHOW_ALERTS) {
+                alert('sendSubscription');
             }
-
-            setCanSubscribe(true);
-
-            alert('sendSubscription');
 
             try {
                 const subscription = await getSubscription();
@@ -41,21 +39,38 @@ export const PushProvider: FC<PropsWithChildren> = ({ children }) => {
 
                 setSubscribed(true);
             } catch (e) {
-                alert('subscription error');
+                if (SHOW_ALERTS) {
+                    alert('subscription error');
+                }
                 console.warn(e);
             }
         };
 
+        const onUserAction = async () => {
+            if (subscribed) {
+                return;
+            }
+
+            setCanSubscribe(true);
+
+            subscribe();
+        };
+
         const clearListener = () => {
-            alert('removeEventListener return');
+            if (SHOW_ALERTS) {
+                alert('removeEventListener return');
+            }
             document.removeEventListener('click', onUserAction);
         };
 
         if (subscribed) {
             clearListener();
         } else if (authStatus === UserAuthStatus.SIGN_IN) {
-            alert('addEventListener');
+            if (SHOW_ALERTS) {
+                alert('addEventListener');
+            }
             document.addEventListener('click', onUserAction);
+            subscribe();
         }
 
         return clearListener;
