@@ -10,7 +10,7 @@ const MainPage: FC<MainPageProps> = () => {
     
     return (
         <div>
-            {APP_VERSION} {import.meta.env.VITE_API_URL}
+            {APP_VERSION} {import.meta.env.VITE_API_URL}asd
         </div>
     );
 };

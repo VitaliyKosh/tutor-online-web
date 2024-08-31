@@ -81,6 +81,7 @@ export const useSubscribe = ({ publicKey }: SubscribeProps) => {
         }
 
         const convertedVapidKey = urlBase64ToUint8Array(publicKey);
+
         return await registration.pushManager.subscribe({
             applicationServerKey: convertedVapidKey,
             userVisibleOnly: true,
