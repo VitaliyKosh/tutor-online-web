@@ -1,9 +1,24 @@
 // Install and activate service worker
-self.addEventListener('install', () => self.skipWaiting());
+self.addEventListener('install', function(event) {
+    event.waitUntil(
+        caches.open('offline-cache').then(function(cache) {
+            return cache.addAll([
+                '/offline/offline.html',
+            ]);
+        })
+    );
+});
+
+self.addEventListener('fetch', function(event) {
+    event.respondWith(
+        fetch(event.request).catch(function() {
+            return caches.match('/offline/offline.html');
+        })
+    );
+});
+
 self.addEventListener('activate', () => self.clients.claim());
 
-
-// Receive push notifications
 self.addEventListener('push', function (e) {
     if (!(
         self.Notification &&
@@ -21,7 +36,6 @@ self.addEventListener('push', function (e) {
     }
 });
 
-// Click and open notification
 self.addEventListener('notificationclick', function(event) {
     event.notification.close();
     clients.openWindow(event.notification.data.action);
