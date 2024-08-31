@@ -59,6 +59,7 @@ const ModulePage: PC = ({ useHeaderTitle, params }) => {
     }, [id, setTitle]);
 
     const submodules = module?.modules;
+    const isShowModulesBlock = submodules && modules.length > 0;
 
     if (moduleLoading) {
         return <ModulePageFallback />;
@@ -67,7 +68,7 @@ const ModulePage: PC = ({ useHeaderTitle, params }) => {
     return (
         <div className={s.page}>
             <div>
-                {submodules && (
+                {isShowModulesBlock && (
                     <>
                         <div className={s.modulesTitle}>
                             <Text textType='title' textSize={'s'}>

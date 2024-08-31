@@ -29,14 +29,15 @@ export const FooterNavBar = ({
 
                     return (
                         <li key={link.key} className={s.linkLi}>
-                            <Link
-                                to={paths.getRoutePath(link.to)}
-                                className={classNames(s.link, {
-                                    [s.activeLink]: link.key === activeTab,
-                                })}
-                            >
+                            <Link to={paths.getRoutePath(link.to)} className={s.link}>
                                 <Content active={link.key === activeTab} />
-                                <div className={s.linkLabel}>{link.label}</div>
+                                <div
+                                    className={classNames(s.linkLabel, {
+                                        [s.activeLink]: link.key === activeTab,
+                                    })}
+                                >
+                                    {link.label}
+                                </div>
                             </Link>
                         </li>
                     );

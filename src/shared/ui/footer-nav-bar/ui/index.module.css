@@ -25,13 +25,11 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  color: var(--text-primary);
 }
 
 .linkIcon {
   height: 23px;
   width: 23px;
-  color: var(--text-primary);
 }
 
 .activeLinkIcon > path {
@@ -39,20 +37,9 @@
 }
 
 .linkLabel {
-  color: var(--text-primary);
+  color: var(--text-tertiary);
 }
 
-/* a,
-a:visited {
-  text-decoration: none;
-} */
-
 .activeLink {
-  .linkIcon {
-    color: var(--text-primary-active);
-  }
-
-  .linkLabel {
-    color: var(--text-primary-active);
-  }
+  color: var(--text-primary);
 }
