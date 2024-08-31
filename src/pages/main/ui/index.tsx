@@ -1,13 +1,8 @@
-import React, { FC } from 'react';
+import { PC } from '@/shared/types/page';
 
-interface MainPageProps {
-    className?: string;
-    children?: React.ReactNode;
-}
+const MainPage: PC = ({ useHeaderTitle }) => {
+    useHeaderTitle('Виталий Кошельков');
 
-const MainPage: FC<MainPageProps> = () => {
-    console.log(import.meta.env);
-    
     return (
         <div>
             {APP_VERSION} {import.meta.env.VITE_API_URL}asd

@@ -1,17 +1,22 @@
 .header {
-  height: 60px;
+  /* background-color: $color-bg-primary; */
+  border-bottom-width: 0.33px;
+  /* border-bottom-color: $color-separator; */
+  border-bottom-style: solid;
+}
+
+.headerTitleBlock {
+  height: 42px;
   display: flex;
-  gap: 20px;
-  padding: 0 20px;
 }
 
 .backButton {
   height: 100%;
+  padding: 9px 16px;
   width: fit-content;
   display: flex;
   align-items: center;
   background-color: transparent;
-  color: var(--text-primary)
 }
 
 .filtersButtonWrapper {
@@ -29,10 +34,6 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-}
-
-.backButtonIcon {
-  font-size: 20px;
 }
 
 .filtersCounter {
@@ -79,5 +80,6 @@
   display: flex;
   align-items: center;
   text-align: center;
+  font: var(--title-l);
   /* @include main-font($fs-s, $color-text-primary, $fw-500); */
 }

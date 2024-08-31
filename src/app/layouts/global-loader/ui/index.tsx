@@ -18,7 +18,7 @@ export const GlobalLoader = ({ children }: Props) => {
     }, [userLoading]);
 
     if (globalLoading) {
-        return <div className={s.pageWrapper}>Загрузка</div>;
+        return <div className={s.pageWrapper}>Загрузка333333</div>;
     }
 
     return children;

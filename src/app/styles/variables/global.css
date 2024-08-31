@@ -1,40 +1,87 @@
 :root {
-    --font-family-main: helvetica, "Times New Roman", serif;
-    --font-size-s: 12px;
-    --font-line-s: 16px;
-    --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
-    --font-size-m: 16px;
-    --font-line-m: 24px;
-    --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
-    --font-size-l: 20px;
-    --font-line-l: 28px;
-    --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
-    --font-size-xl: 24px;
-    --font-line-xl: 32px;
-    --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
+    --font-family-text: helvetica, "Times New Roman", serif;
+    --font-family-title: helvetica, "Times New Roman", serif;
+    
+    /* sizes */
 
-    --font-login-logo-size: 14vw;
-    --font-login-logo-line: 14vw;
-    --font-login-logo: var(--font-login-logo-size) / var(--font-login-logo-line) var(--font-family-main);
+    /* text */
+    
+    --text-size-xs: 12px;
+    --text-line-xs: 16px;
+    --text-xs: var(--text-size-xs) / var(--text-line-xs) var(--font-family-text);
 
-    --border-radius: 20px;
+    --text-size-s: 13px;
+    --text-line-s: 16px;
+    --text-s: var(--text-size-s) / var(--text-line-s) var(--font-family-text);
+
+    --text-size-m: 14px;
+    --text-line-m: 18px;
+    --text-m: var(--text-size-m) / var(--text-line-m) var(--font-family-text);
+
+    --text-size-l: 16px;
+    --text-line-l: 20px;
+    --text-l: var(--text-size-l) / var(--text-line-l) var(--font-family-text);
+
+    --text-size-xl: 18px;
+    --text-line-xl: 24px;
+    --text-xl: var(--text-size-xl) / var(--text-line-xl) var(--font-family-text);
+
+    /* title  */
+
+    --title-weight: 700;
+
+    --title-size-xs: 16px;
+    --title-line-xs: 20px;
+    --title-xs: var(--title-weight) var(--title-size-xs) / var(--title-line-xs) var(--font-family-title);
+
+    --title-size-s: 20px;
+    --title-line-s: 28px;
+    --title-s: var(--title-weight) var(--title-size-s) / var(--title-line-s) var(--font-family-title);
+
+    --title-size-m: 26px;
+    --title-line-m: 32px;
+    --title-m: var(--title-weight) var(--title-size-m) / var(--title-line-m) var(--font-family-title);
+
+    --title-size-l: 30px;
+    --title-line-l: 36px;
+    --title-l: var(--title-weight) var(--title-size-l) / var(--title-line-l) var(--font-family-title);
+
+    --title-size-xl: 34px;
+    --title-line-xl: 40px;
+    --title-xl: var(--title-weight) var(--title-size-xl) / var(--title-line-xl) var(--font-family-title);
+
+
+    /* --border-radius: 20px;
     --box-shadow: 0 0 10px 5px #00000015;
     --box-shadow-inset: inset -2px -2px 7px 0px #00000020;
-    --page-box-shadow: 0 0 30px 5px #00000015;
+    --page-box-shadow: 0 0 30px 5px #00000015; */
+
+    --blockBorderRadius: 20px;
+    --page-padding: 20px;
 
     --iphone-x-padding: 34px;
     --footer-height: 70px;
 
     /* colors */
 
-    --text-primary: rgb(117 112 99);
-    --text-primary-active: rgb(91, 87, 76);
-    /* --text-secondary: rgb(198, 193, 181); */
-    /* --text-active: rgb(0, 0, 0); */
-    /* --text-inverse: rgb(254 254 254); */
-    /* --text-alert: #f53c14; */
-    /* --text-warning: #dabc48; */
-    /* --text-success: #4caf50; */
+    --text-primary: rgb(69, 66, 58);
+    --text-secondary: rgb(117 112 99);
+    --text-tertiary: rgb(151, 144, 127);
+    --text-primaryInverted: rgb(233, 223, 198);
+    --text-secondaryInverted: rgb(199, 190, 169);
+    --text-tertiaryInverted: rgb(153, 147, 130);
+    --text-positive: #4caf50;
+    --text-attention: #dabc48;
+    --text-negative: #f53c14;
+    --text-link: rgb(75, 132, 255);
+
+    --color-primaryBg: #ffffff;
+    --color-secondaryBg: rgb(237, 226, 201);
+    --color-tertiaryBg: rgb(218, 207, 183);
+
+    --color-primaryBlockBg: rgb(233, 223, 198);
+    --color-secondaryBlockBg: rgb(199, 190, 169);
+    --color-tertiaryBlockBg: rgb(153, 147, 130);
     
     /* --bg-primary: rgb(237 237 237); */
     /* --bg-base: #fefefe; */
@@ -43,9 +90,9 @@
     /* --bg-blocks-active: rgb(238, 238, 238); */
     /* --bg-shadow: rgba(0, 0, 0, 0.2); */
     
-    /* --separator: #757f8a; */
-    /* --separator-alert: #f53c14; */
-    /* --ctrl-Math: rgb(242 210 154); */
-    /* --ctrl-Math-secondary: rgb(146 159 132); */
-    /* --ctrl-Math-third: rgb(137 162 167); */
+    /* --separator: #757f8a;
+    --separator-alert: #f53c14;
+    --ctrl-Math: rgb(242 210 154);
+    --ctrl-Math-secondary: rgb(146 159 132);
+    --ctrl-Math-third: rgb(137 162 167); */
 }

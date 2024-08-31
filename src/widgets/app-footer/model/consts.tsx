@@ -9,7 +9,7 @@ const footerText: Record<FooterTabs, string> = {
     [FooterTabs.MAIN]: 'Главная',
     [FooterTabs.STUDY]: 'Обучение',
     [FooterTabs.PROGRESS]: 'Прогресс',
-    [FooterTabs.TESTS]: 'Сообщения',
+    [FooterTabs.TESTS]: 'Тесты',
     [FooterTabs.MAIN_MENU]: 'Меню',
 };
 

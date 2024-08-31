@@ -5,7 +5,8 @@ import { AccountTypes } from 'tutor-online-global-shared';
 
 export const ProgressPageLayoutProps: ScreenLayoutProps = {
     Page: MainPage,
-    headerTitle: 'PROGRESS',
+    headerTitle: 'Прогресс',
     tab: FooterTabs.PROGRESS,
-    allowedAccountTypes: [AccountTypes.USER]
+    allowedAccountTypes: [AccountTypes.USER],
+    showBackButton: false,
 };

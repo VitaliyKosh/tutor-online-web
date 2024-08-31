@@ -5,7 +5,8 @@ export interface PageProps {
     header: boolean;
     footer: boolean;
     isStandaloneIphoneX: boolean;
-    setHeaderTitle: (value: string | undefined) => void;
+    useHeaderTitle: (value: string | undefined) => (value: string | undefined) => void;
+    params: Partial<Record<string, string>>;
 }
 
 type PageComponent = (props: PageProps) => ReactNode;

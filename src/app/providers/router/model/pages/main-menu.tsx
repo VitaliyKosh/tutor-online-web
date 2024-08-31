@@ -6,5 +6,6 @@ import { AccountTypes } from 'tutor-online-global-shared';
 export const MainMenuPageLayoutProps: ScreenLayoutProps = {
     Page: MainPage,
     tab: FooterTabs.MAIN_MENU,
-    allowedAccountTypes: [AccountTypes.USER]
+    allowedAccountTypes: [AccountTypes.USER],
+    showBackButton: false,
 };

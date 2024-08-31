@@ -1,30 +1,26 @@
-import classNames from 'classnames';
 import s from './index.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { Text } from '@/shared/ui/text';
 
 export interface Props {
-    className?: string;
-    text?: string;
-    onBackButtonClick?: () => void;
+    text: string;
+    onBackButtonClick: () => void;
+    showBackButton: boolean;
 }
 
-export const Header = ({ className, text, onBackButtonClick }: Props) => {
+export const Header = ({ showBackButton, text, onBackButtonClick }: Props) => {
     return (
-        <div className={classNames(s.header, className)}>
-            <div className={classNames(s.headerTitleBlock, className)}>
-                <button
-                    className={s.backButton}
-                    onClick={onBackButtonClick}
-                    data-testid='back-button'
-                >
-                    {/* <Icon
-                        icon={Icons.HEADER_ARROW}
-                        className={s.arrowLeft}
-                        data-testid='header-left-arrow'
-                    /> */}
+        <div className={s.header}>
+            {showBackButton && (
+                <button className={s.backButton} onClick={onBackButtonClick}>
+                    <FontAwesomeIcon className={s.backButtonIcon} icon={faChevronLeft} />
                 </button>
-                <div className={s.headerTitle} data-testid='header-title'>
+            )}
+            <div className={s.headerTitle} data-testid='header-title'>
+                <Text textType='title' textSize={'m'} textColor='primary'>
                     {text}
-                </div>
+                </Text>
             </div>
         </div>
     );

@@ -1,0 +1,6 @@
+.module {
+    width: 100%;
+    background-color: var(--color-primaryBlockBg);
+    padding: 30px;
+    border-radius:var(--blockBorderRadius);
+}

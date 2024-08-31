@@ -4,11 +4,12 @@ import { RouteNames } from '@/shared/consts/paths';
 import { Header } from '@/shared/ui/header';
 
 interface Props {
-    header?: string;
+    header: string;
     defaultPreviousRouteName: RouteNames | undefined;
+    showBackButton: boolean
 }
 
-export const AppHeader = ({ header, defaultPreviousRouteName }: Props) => {
+export const AppHeader = ({ header, defaultPreviousRouteName, showBackButton }: Props) => {
     const navigate = useNavigate();
 
     const onBackButtonClick = () => {
@@ -21,5 +22,5 @@ export const AppHeader = ({ header, defaultPreviousRouteName }: Props) => {
         }
     };
 
-    return <Header text={header} onBackButtonClick={onBackButtonClick} />;
+    return <Header showBackButton={showBackButton} text={header} onBackButtonClick={onBackButtonClick} />;
 };

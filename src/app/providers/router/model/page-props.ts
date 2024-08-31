@@ -9,6 +9,7 @@ import {
     LoginPageLayoutProps,
     NotFoundPageLayoutProps,
     NotActivatedPageLayoutProps,
+    ModulePageLayoutProps
 } from './pages/index';
 import { ScreenLayoutProps } from './types';
 
@@ -22,4 +23,5 @@ export const pagesProps: Record<RouteNames, ScreenLayoutProps> = {
     [RouteNames.LOGIN]: LoginPageLayoutProps,
     [RouteNames.ERROR_404]: NotFoundPageLayoutProps,
     [RouteNames.NOT_ACTIVATED]: NotActivatedPageLayoutProps,
+    [RouteNames.MODULE]: ModulePageLayoutProps
 };

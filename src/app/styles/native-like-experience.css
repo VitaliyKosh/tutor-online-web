@@ -8,23 +8,13 @@ body {
     overscroll-behavior-y: contain;
 }
 
-/* ✓ Add Safe Areas Container */
-.container {
-    /* Using safe areas with fallback values */
-    margin: 5px 5px 0 0;
-    margin: env(safe-area-inset-top, 5px) 
-            env(safe-area-inset-right, 5px)
-            env(safe-area-inset-bottom, 5px)
-            env(safe-area-inset-left, 5px) !important;
-}
-
 /* ✓ Disable touch-callout */
 a {
     -webkit-touch-callout: none;
 }
 
 /* ✓ Avoid Content Selection */
-.element, button, label {
+button, label {
     user-select: none;
     -webkit-user-select: none;
 }
