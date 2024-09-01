@@ -12,6 +12,7 @@ const checkAuth = async ({ signInAction }: { signInAction: (payload: UserState) 
     if (refreshToken) {
         try {
             const checkAuthRes = await AuthService.checkAuth();
+
             signInAction({
                 user: checkAuthRes.data.user,
                 authStatus: UserAuthStatus.SIGN_IN,

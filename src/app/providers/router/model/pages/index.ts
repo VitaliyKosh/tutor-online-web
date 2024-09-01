@@ -8,3 +8,4 @@ export { NotFoundPageLayoutProps } from './not-found';
 export { LoginPageLayoutProps } from './login';
 export { NotActivatedPageLayoutProps } from './not-activated';
 export { ModulePageLayoutProps } from './module';
+export { SDUIPageLayoutProps } from './sdui';

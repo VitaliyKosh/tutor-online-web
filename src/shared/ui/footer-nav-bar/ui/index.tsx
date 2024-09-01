@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { paths } from '@/shared/lib/path';
 import s from './index.module.css';
+import { Text } from '@/shared/ui/text';
 import { FooterNavBarLink } from '../model/types';
 
 interface Props {
@@ -36,7 +37,7 @@ export const FooterNavBar = ({
                                         [s.activeLink]: link.key === activeTab,
                                     })}
                                 >
-                                    {link.label}
+                                    <Text textSize='s' textColor={link.key === activeTab ? 'primary' : 'tertiary'}>{link.label}</Text>
                                 </div>
                             </Link>
                         </li>

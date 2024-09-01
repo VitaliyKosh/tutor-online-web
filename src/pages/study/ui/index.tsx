@@ -1,37 +1,36 @@
 import ModuleService from '@/shared/api-services/module-service';
-import { useAppSelector } from '@/shared/hooks/use-app-selector';
 import { PC } from '@/shared/types/page';
 import { useEffect, useState } from 'react';
-import { Module } from 'tutor-online-global-shared';
 import s from './index.module.css';
 import { ModuleList } from '@/shared/ui/module-list';
+import { ModuleDto } from 'tutor-online-global-shared/dist/types/dto/module/shared';
+import { StudyPageFallback } from './fallback';
 
 const StudyPage: PC = () => {
-    const rootModules = useAppSelector((s) => s.user.user?.rootModules);
-    const [modules, setModules] = useState<Module[]>([]);
+    const [modules, setModules] = useState<ModuleDto[]>([]);
     const [modulesLoading, setModulesLoading] = useState<boolean>(true);
 
-    console.log(rootModules);
+    console.log(modules);
 
     useEffect(() => {
         const loadModules = async () => {
-            if (rootModules) {
-                const getModuleRes = await Promise.all(
-                    rootModules.map((m) => ModuleService.getModule(m)),
-                );
-                const modules = getModuleRes.map((res) => res.data.module);
+            const getModuleRes = await ModuleService.getRootModules();
+            const modules = getModuleRes.data.rootModules;
 
-                setModules(modules);
-                setModulesLoading(false);
-            }
+            setModules(modules);
+            setModulesLoading(false);
         };
 
         loadModules();
-    }, [rootModules]);
+    }, []);
+
+    if (modulesLoading) {
+        return <StudyPageFallback />;
+    }
 
     return (
         <div className={s.page}>
-            {rootModules ? (
+            {modules.length > 0 ? (
                 <ModuleList modules={modules} modulesLoading={modulesLoading} />
             ) : (
                 <div>Нет модулей</div>

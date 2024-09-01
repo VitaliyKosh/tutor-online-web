@@ -1,6 +1,7 @@
 @import "reset";
 @import "variables/global";
 @import "native-like-experience";
+@import "fonts.css";
 
 html {
     /* overscroll-behavior-y: none;

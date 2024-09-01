@@ -4,25 +4,23 @@ import { ModuleList } from '@/shared/ui/module-list';
 import { Text } from '@/shared/ui/text';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Module } from 'tutor-online-global-shared';
 import s from './index.module.css';
 import { ModulePageFallback } from './fallback';
+import { ModuleDto } from 'tutor-online-global-shared/dist/types/dto/module/shared';
 
 const ModulePage: PC = ({ useHeaderTitle, params }) => {
     const location = useLocation();
 
     const { id } = params;
 
-    const state: { module: Module } = location.state;
-    const hasState = Boolean(state);
-
-    console.log(state);
+    const state: { module: ModuleDto } = location.state;
+    const hasState = Boolean(state);    
 
     const setTitle = useHeaderTitle(hasState ? state.module.name : undefined);
-    const [module, setModule] = useState<Module | null>(hasState ? state.module : null);
+    const [module, setModule] = useState<ModuleDto | null>(hasState ? state.module : null);
     const [moduleLoading, setModuleLoading] = useState(hasState ? false : true);
 
-    const [modules, setModules] = useState<Module[]>([]);
+    const [modules, setModules] = useState<ModuleDto[]>([]);
     const [modulesLoading, setModulesLoading] = useState<boolean>(true);
 
     useEffect(() => {
@@ -45,7 +43,7 @@ const ModulePage: PC = ({ useHeaderTitle, params }) => {
                     const submodules = getModuleRes.data.module.modules;
 
                     if (submodules) {
-                        loadSubmodules(submodules);
+                        loadSubmodules(submodules.map(m => m.id));
                     }
                 } finally {
                     setModuleLoading(false);
@@ -59,7 +57,7 @@ const ModulePage: PC = ({ useHeaderTitle, params }) => {
     }, [id, setTitle]);
 
     const submodules = module?.modules;
-    const isShowModulesBlock = submodules && modules.length > 0;
+    const isShowModulesBlock = (submodules && submodules.length > 0) || modules.length > 0;
 
     if (moduleLoading) {
         return <ModulePageFallback />;

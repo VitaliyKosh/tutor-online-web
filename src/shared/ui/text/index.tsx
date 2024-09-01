@@ -1,25 +1,18 @@
 import { FC, AllHTMLAttributes } from 'react';
 import c from './index.module.css';
 import classNames from 'classnames';
+import { Size, TextAlign, TextColor } from 'tutor-online-global-shared';
+import { parse } from 'node-html-parser';
+import { MathJaxContext } from 'better-react-mathjax';
 
-export type TextSize = 'xs' | 's' | 'm' | 'l' | 'xl';
 export type TextType = 'text' | 'title';
-export type TextColor =
-    | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'primaryInverted'
-    | 'secondaryInverted'
-    | 'tertiaryInverted'
-    | 'positive'
-    | 'attention'
-    | 'negative'
-    | 'link';
 
 interface Props extends AllHTMLAttributes<HTMLParagraphElement> {
     textType?: TextType;
     textColor?: TextColor;
-    textSize: TextSize;
+    textSize: Size;
+    textAlign?: TextAlign;
+    children: string | undefined;
 }
 
 export const Text: FC<Props> = ({
@@ -27,19 +20,24 @@ export const Text: FC<Props> = ({
     textSize = 'm',
     textType = 'text',
     textColor = 'primary',
+    textAlign = 'left',
     children,
     ...otherProps
 }) => {
+    const text = parse(children ?? '');
+
     return (
-        <span
-            className={classNames(c.text, className)}
-            style={{
-                font: `var(--${textType}-${textSize})`,
-                color: `var(--text-${textColor})`,
-            }}
-            {...otherProps}
-        >
-            {children}
-        </span>
+        <MathJaxContext>
+            <span
+                className={classNames(c.text, className)}
+                style={{
+                    font: `var(--${textType}-${textSize})`,
+                    color: `var(--text-${textColor})`,
+                    textAlign: textAlign,
+                }}
+                {...otherProps}
+                dangerouslySetInnerHTML={{ __html: text.innerHTML }}
+            ></span>
+        </MathJaxContext>
     );
 };

@@ -1,6 +1,27 @@
 .module {
+    position: relative;
     width: 100%;
+    min-height: 40px;
     background-color: var(--color-primaryBlockBg);
-    padding: 30px;
     border-radius:var(--blockBorderRadius);
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
+}
+
+.disabled {
+    filter: opacity(0.5);
+}
+
+.moduleNameContainer {
+    padding: 0 20px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.labelContainer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }

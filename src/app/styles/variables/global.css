@@ -1,6 +1,6 @@
 :root {
-    --font-family-text: helvetica, "Times New Roman", serif;
-    --font-family-title: helvetica, "Times New Roman", serif;
+    --font-family-text: Main Font, helvetica, "Times New Roman", serif;
+    --font-family-title: Main Font, helvetica, "Times New Roman", serif;
     
     /* sizes */
 
@@ -64,6 +64,8 @@
 
     /* colors */
 
+    --text-white: rgb(255, 255, 255);
+    --text-black: rgb(0, 0, 0);
     --text-primary: rgb(88, 84, 74);
     --text-secondary: rgb(117 112 99);
     --text-tertiary: rgb(151, 144, 127);
@@ -74,25 +76,20 @@
     --text-attention: #dabc48;
     --text-negative: #f53c14;
     --text-link: rgb(75, 132, 255);
+    --text-yellow: rgb(242 210 154);
+    --text-green: rgb(146 159 132);
+    --text-blue: rgb(137 162 167);
 
     --color-primaryBg: #ffffff;
     --color-secondaryBg: rgb(237, 226, 201);
     --color-tertiaryBg: rgb(218, 207, 183);
-
     --color-primaryBlockBg: rgb(233, 223, 198);
     --color-secondaryBlockBg: rgb(199, 190, 169);
     --color-tertiaryBlockBg: rgb(153, 147, 130);
     
-    /* --bg-primary: rgb(237 237 237); */
-    /* --bg-base: #fefefe; */
-    /* --bg-blocks: rgb(255, 255, 255); */
-    /* --bg-blocks-hover: rgb(243, 243, 243); */
-    /* --bg-blocks-active: rgb(238, 238, 238); */
-    /* --bg-shadow: rgba(0, 0, 0, 0.2); */
-    
-    /* --separator: #757f8a;
+    --separator: #757f8a;
     --separator-alert: #f53c14;
-    --ctrl-Math: rgb(242 210 154);
-    --ctrl-Math-secondary: rgb(146 159 132);
-    --ctrl-Math-third: rgb(137 162 167); */
+    --color-Math: rgb(242 210 154);
+    --color-Math-secondary: rgb(146 159 132);
+    --color-Math-third: rgb(137 162 167);
 }

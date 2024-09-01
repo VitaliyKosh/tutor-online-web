@@ -1,4 +1,3 @@
-// Install and activate service worker
 self.addEventListener('install', function(event) {
     event.waitUntil(
         caches.open('offline-cache').then(function(cache) {
@@ -9,12 +8,18 @@ self.addEventListener('install', function(event) {
     );
 });
 
-self.addEventListener('fetch', function(event) {
-    event.respondWith(
-        fetch(event.request).catch(function() {
-            return caches.match('/offline/offline.html');
-        })
-    );
+self.addEventListener('fetch', function(event) {  
+    const url = new URL(event.request.url);
+    const pathBase = url.pathname.split('/')[1];
+
+    if (pathBase !== 'api') {
+        event.respondWith(
+            fetch(event.request).catch(function() {
+                return caches.match('/offline/offline.html');
+            })
+        );
+    } 
+
 });
 
 self.addEventListener('activate', () => self.clients.claim());

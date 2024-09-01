@@ -49,9 +49,7 @@ const LoginPage: FC<LoginPageProps> = () => {
     };
 
     const onLogout = async () => {
-        const signInRes = await AuthService.signOut();
-
-        console.log(signInRes);
+        await AuthService.signOut();
     };
 
     if (authStatus === UserAuthStatus.SIGN_IN) {
