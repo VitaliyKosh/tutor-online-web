@@ -1,83 +1,75 @@
 .header {
   height: 60px;
   display: flex;
-  gap: 20px;
-  padding: 0 20px;
 }
 
 .backButton {
   height: 100%;
-  width: fit-content;
   display: flex;
   align-items: center;
   background-color: transparent;
-  color: var(--text-primary)
-}
-
-.filtersButtonWrapper {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.filtersButton {
-  position: relative;
-  height: 100%;
-  padding: 9px 16px;
-  width: fit-content;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.backButtonIcon {
-  font-size: 20px;
-}
-
-.filtersCounter {
-  position: absolute;
-  right: 12px;
-  top: 7px;
-  min-width: 12px;
-  padding: 0 2px;
-  height: 12px;
-  /* background-color: $color-text-alert; */
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* @include caption-s-font($color-text-primary-buttons); */
-}
-
-.arrowLeft {
-  /* color: $color-input-icons; */
-  width: 24px;
-  height: 24px;
-
-  & > path {
-    fill: currentColor;
-  }
-}
-
-.filters {
-  width: 24px;
-  height: 24px;
-}
-
-.rightAccessory {
-  height: 100%;
-  padding: 9px 16px;
-  width: fit-content;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  width: 100%;
+  color: var(--text-primary);
+  padding: 0 20px
 }
 
 .headerTitle {
   display: flex;
   align-items: center;
   text-align: center;
-  /* @include main-font($fs-s, $color-text-primary, $fw-500); */
+  flex: 1;
+  padding-top: 5px;
+  overflow: hidden;
+  display: flex;
+}
+
+.headerTitle.noBackButton {
+  padding-left: 20px;
+}
+
+.headerTitle.isRightAddon {
+  margin-right: 20px;
+}
+
+
+.text {
+  /* width: 100%; */
+  /* overflow: hidden; */
+  white-space: nowrap;
+  /* text-overflow: ellipsis; */
+}
+
+.animatePrevTitle {
+  display: inline-block;
+  animation: animate 10s ease-in-out infinite; /* Анимация */
+  padding-right: 30px;
+}
+
+.animateNextTitle {
+  display: inline-block;
+  animation: animate 10s ease-in-out infinite; /* Анимация */
+  padding-right: 30px;
+}
+
+.animate {
+  display: inline-block;
+  animation: animate 10s ease-in-out infinite; /* Анимация */
+  padding-right: 30px;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateX(-100%);
+  }
+  10% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+
+.rightAddon {
+  display: flex;
+  align-items: center;
+  padding-right: 20px
 }

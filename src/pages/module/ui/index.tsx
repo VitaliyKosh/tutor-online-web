@@ -7,16 +7,19 @@ import { useLocation } from 'react-router-dom';
 import s from './index.module.css';
 import { ModulePageFallback } from './fallback';
 import { ModuleDto } from 'tutor-online-global-shared/dist/types/dto/module/shared';
+import { ModuleLabel } from '@/shared/ui/module-label';
 
-const ModulePage: PC = ({ useHeaderTitle, params }) => {
+const ModulePage: PC = (props) => {
+    const { useHeaderTitle, params, useHeaderAddon } = props;
     const location = useLocation();
 
     const { id } = params;
 
     const state: { module: ModuleDto } = location.state;
-    const hasState = Boolean(state);    
+    const hasState = Boolean(state);
 
     const setTitle = useHeaderTitle(hasState ? state.module.name : undefined);
+    const setHeaderAddon = useHeaderAddon(<ModuleLabel status={state.module.status} size='m' />);
     const [module, setModule] = useState<ModuleDto | null>(hasState ? state.module : null);
     const [moduleLoading, setModuleLoading] = useState(hasState ? false : true);
 
@@ -39,11 +42,14 @@ const ModulePage: PC = ({ useHeaderTitle, params }) => {
 
                     setModule(getModuleRes.data.module);
                     setTitle(getModuleRes.data.module.name);
+                    setHeaderAddon(
+                        <ModuleLabel status={getModuleRes.data.module.status} size='m' />,
+                    );
 
                     const submodules = getModuleRes.data.module.modules;
 
                     if (submodules) {
-                        loadSubmodules(submodules.map(m => m.id));
+                        loadSubmodules(submodules.map((m) => m.id));
                     }
                 } finally {
                     setModuleLoading(false);
@@ -54,13 +60,13 @@ const ModulePage: PC = ({ useHeaderTitle, params }) => {
         };
 
         loadModule();
-    }, [id, setTitle]);
+    }, [id, setTitle, setHeaderAddon, state.module.status]);
 
     const submodules = module?.modules;
     const isShowModulesBlock = (submodules && submodules.length > 0) || modules.length > 0;
 
     if (moduleLoading) {
-        return <ModulePageFallback />;
+        return <ModulePageFallback {...props} />;
     }
 
     return (

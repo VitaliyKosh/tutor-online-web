@@ -2,9 +2,11 @@ import { FC } from 'react';
 import s from './index.module.css';
 import { Text } from '@/shared/ui/text';
 import { ModuleStatus } from 'tutor-online-global-shared';
+import classNames from 'classnames';
 
 type Props = {
     status: ModuleStatus | undefined;
+    size?: 's' | 'm';
 };
 
 type StatusOptions = {
@@ -23,7 +25,7 @@ const statusOptions: Record<string, StatusOptions> = {
     },
 };
 
-export const Label: FC<Props> = ({ status }) => {
+export const ModuleLabel: FC<Props> = ({ status, size = 's' }) => {
     if (
         !status ||
         [ModuleStatus.CLOSED, ModuleStatus.OPENED, ModuleStatus.HIDDEN].includes(status)
@@ -34,8 +36,10 @@ export const Label: FC<Props> = ({ status }) => {
     const { backgroundColor, text } = statusOptions[status];
 
     return (
-        <div className={s.label} style={{ backgroundColor }}>
-            <Text textSize={'s'} textColor='white'>{text}</Text>
+        <div className={classNames(s.label, s[size])} style={{ backgroundColor }}>
+            <Text textSize={size} textColor='white'>
+                {text}
+            </Text>
         </div>
     );
 };

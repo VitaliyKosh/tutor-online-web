@@ -7,7 +7,7 @@ import { RouteNames } from '@/shared/consts/paths';
 import { ModuleDto } from 'tutor-online-global-shared/dist/types/dto/module/shared';
 import { ModuleStatus } from 'tutor-online-global-shared';
 import classNames from 'classnames';
-import { Label } from './label';
+import { ModuleLabel } from '../module-label';
 
 type Props = {
     module: ModuleDto;
@@ -30,11 +30,13 @@ export const ModuleButton: FC<Props> = ({ module }) => {
             })}
             state={{ module }}
         >
-            <div className={s.moduleNameContainer}>
-                <Text textSize={'xl'}>{module.name}</Text>
-            </div>
-            <div className={s.labelContainer}>
-                <Label status={module.status} />
+            <div className={s.moduleTopContainer}>
+                <div className={s.moduleNameContainer}>
+                    <Text className={s.moduleName} textSize={'xl'}>{module.name}</Text>
+                </div>
+                <div className={s.labelContainer}>
+                    <ModuleLabel status={module.status} />
+                </div>
             </div>
         </ModuleComponent>
     );

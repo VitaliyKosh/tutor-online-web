@@ -2,14 +2,16 @@ import { useNavigate } from 'react-router-dom';
 import { paths } from '@/shared/lib/path';
 import { RouteNames } from '@/shared/consts/paths';
 import { Header } from '@/shared/ui/header';
+import { ReactNode } from 'react';
 
 interface Props {
     header: string;
     defaultPreviousRouteName: RouteNames | undefined;
     showBackButton: boolean
+    rightAddon?: ReactNode;
 }
 
-export const AppHeader = ({ header, defaultPreviousRouteName, showBackButton }: Props) => {
+export const AppHeader = ({ header, defaultPreviousRouteName, showBackButton, rightAddon }: Props) => {
     const navigate = useNavigate();
 
     const onBackButtonClick = () => {
@@ -22,5 +24,5 @@ export const AppHeader = ({ header, defaultPreviousRouteName, showBackButton }: 
         }
     };
 
-    return <Header showBackButton={showBackButton} text={header} onBackButtonClick={onBackButtonClick} />;
+    return <Header showBackButton={showBackButton} text={header} onBackButtonClick={onBackButtonClick} rightAddon={rightAddon} />;
 };

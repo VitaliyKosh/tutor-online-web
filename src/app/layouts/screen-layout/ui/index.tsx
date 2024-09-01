@@ -1,4 +1,12 @@
-import { Suspense, useLayoutEffect, useState } from 'react';
+import {
+    ReactNode,
+    Suspense,
+    useCallback,
+    useLayoutEffect,
+    useMemo,
+    useRef,
+    useState,
+} from 'react';
 import { pagesProps } from '@/app/providers/router/model/page-props';
 import { RouteNames } from '@/shared/consts/paths';
 import { AppFooter } from '@/widgets/app-footer';
@@ -11,6 +19,7 @@ import { Navigate, useLocation, useParams } from 'react-router-dom';
 import { paths } from '@/shared/lib/path';
 import { AccountTypes } from 'tutor-online-global-shared';
 import { UserAuthStatus } from '@/shared/store/slices/user/types';
+import { UseHeaderAddon, UseHeaderTitle } from '@/shared/types/page';
 
 interface Props {
     routeName: RouteNames;
@@ -28,6 +37,9 @@ export const ScreenLayout = ({ routeName }: Props) => {
         dynamicHeader = false,
     } = pagesProps[routeName];
     const [dynamicTitleText, setDynamicTitleText] = useState<string | undefined>(undefined);
+    const [dynamicTitleRightAddon, setDynamicTitleRightAddon] = useState<ReactNode | undefined>(
+        undefined,
+    );
 
     const params = useParams();
 
@@ -41,16 +53,38 @@ export const ScreenLayout = ({ routeName }: Props) => {
     const isStandaloneIphoneXValue = isStandaloneIphoneX();
     const titleTextFromProps = headerTitle;
 
-    const useHeaderTitle = (value: string | undefined) => {
+    const useHeaderTitle: UseHeaderTitle = (value: string | undefined) => {
+        const isUnmount = useRef(false);
+
         useLayoutEffect(() => {
             setDynamicTitleText(value);
 
             return () => {
+                isUnmount.current = true;
                 setDynamicTitleText(undefined);
             };
         }, [value]);
 
-        return setDynamicTitleText;
+        return useCallback((value: string | undefined) => {
+            if (!isUnmount.current) {
+                setDynamicTitleText(value);
+            }
+        }, []);
+    };
+
+    const useHeaderAddon: UseHeaderAddon = (value: ReactNode | undefined) => {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        const memoizedComponent = useMemo(() => value, []);
+
+        useLayoutEffect(() => {
+            setDynamicTitleRightAddon(memoizedComponent);
+
+            return () => {
+                setDynamicTitleRightAddon(undefined);
+            };
+        }, [memoizedComponent]);
+
+        return setDynamicTitleRightAddon;
     };
 
     if (
@@ -86,6 +120,7 @@ export const ScreenLayout = ({ routeName }: Props) => {
         footer: isFooter,
         isStandaloneIphoneX: isStandaloneIphoneXValue,
         useHeaderTitle: useHeaderTitle,
+        useHeaderAddon: useHeaderAddon,
         params: params,
     };
 
@@ -96,6 +131,7 @@ export const ScreenLayout = ({ routeName }: Props) => {
                     header={titleTextFromProps ?? dynamicTitleText ?? ''}
                     defaultPreviousRouteName={defaultPreviousRouteName}
                     showBackButton={showBackButton}
+                    rightAddon={dynamicTitleRightAddon}
                 />
             )}
             <div className={s.pageWrapper}>

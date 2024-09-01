@@ -1,0 +1,15 @@
+.label {
+    border-radius: var(--blockBorderRadius);
+    display: flex;
+    align-items: center;
+}
+
+.label.s {
+    padding: 0 10px;
+    height: 20px;
+}
+
+.label.m {
+    padding: 0 15px;
+    height: 32px;
+}
