@@ -1,12 +1,4 @@
-import {
-    ReactNode,
-    Suspense,
-    useCallback,
-    useLayoutEffect,
-    useMemo,
-    useRef,
-    useState,
-} from 'react';
+import { ReactNode, Suspense, useCallback, useLayoutEffect, useMemo, useState } from 'react';
 import { pagesProps } from '@/app/providers/router/model/page-props';
 import { RouteNames } from '@/shared/consts/paths';
 import { AppFooter } from '@/widgets/app-footer';
@@ -54,21 +46,16 @@ export const ScreenLayout = ({ routeName }: Props) => {
     const titleTextFromProps = headerTitle;
 
     const useHeaderTitle: UseHeaderTitle = (value: string | undefined) => {
-        const isUnmount = useRef(false);
-
         useLayoutEffect(() => {
             setDynamicTitleText(value);
 
             return () => {
-                isUnmount.current = true;
                 setDynamicTitleText(undefined);
             };
         }, [value]);
 
         return useCallback((value: string | undefined) => {
-            if (!isUnmount.current) {
-                setDynamicTitleText(value);
-            }
+            setDynamicTitleText(value);
         }, []);
     };
 

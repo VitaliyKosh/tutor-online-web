@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 import { ModuleDto } from 'tutor-online-global-shared/dist/types/dto/module/shared';
 import { ModuleLabel } from '@/shared/ui/module-label';
 
-export const ModulePageFallback: PC = ({ useHeaderTitle, useHeaderAddon }) => {
+export const SDUIPageFallback: PC = ({ useHeaderTitle, useHeaderAddon }) => {
     const location = useLocation();
 
     const state: { module: ModuleDto } = location.state;

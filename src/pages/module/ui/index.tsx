@@ -8,6 +8,7 @@ import s from './index.module.css';
 import { ModulePageFallback } from './fallback';
 import { ModuleDto } from 'tutor-online-global-shared/dist/types/dto/module/shared';
 import { ModuleLabel } from '@/shared/ui/module-label';
+import { TheoryList } from '@/shared/ui/theory-list';
 
 const ModulePage: PC = (props) => {
     const { useHeaderTitle, params, useHeaderAddon } = props;
@@ -19,7 +20,9 @@ const ModulePage: PC = (props) => {
     const hasState = Boolean(state);
 
     const setTitle = useHeaderTitle(hasState ? state.module.name : undefined);
-    const setHeaderAddon = useHeaderAddon(<ModuleLabel status={state.module.status} size='m' />);
+    const setHeaderAddon = useHeaderAddon(
+        hasState ? <ModuleLabel status={state.module.status} size='m' /> : undefined,
+    );
     const [module, setModule] = useState<ModuleDto | null>(hasState ? state.module : null);
     const [moduleLoading, setModuleLoading] = useState(hasState ? false : true);
 
@@ -42,6 +45,7 @@ const ModulePage: PC = (props) => {
 
                     setModule(getModuleRes.data.module);
                     setTitle(getModuleRes.data.module.name);
+
                     setHeaderAddon(
                         <ModuleLabel status={getModuleRes.data.module.status} size='m' />,
                     );
@@ -60,10 +64,12 @@ const ModulePage: PC = (props) => {
         };
 
         loadModule();
-    }, [id, setTitle, setHeaderAddon, state.module.status]);
+    }, [id, setTitle, setHeaderAddon, state]);
 
     const submodules = module?.modules;
+    const theory = module?.theory;
     const isShowModulesBlock = (submodules && submodules.length > 0) || modules.length > 0;
+    const isShowTheoryBlock = theory && theory.length > 0;
 
     if (moduleLoading) {
         return <ModulePageFallback {...props} />;
@@ -72,6 +78,16 @@ const ModulePage: PC = (props) => {
     return (
         <div className={s.page}>
             <div>
+                {isShowTheoryBlock && (
+                    <>
+                        <div className={s.modulesTitle}>
+                            <Text textType='title' textSize={'s'}>
+                                Материалы
+                            </Text>
+                        </div>
+                        <TheoryList theory={theory} theoryLoading={false} />
+                    </>
+                )}
                 {isShowModulesBlock && (
                     <>
                         <div className={s.modulesTitle}>
