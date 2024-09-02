@@ -1,8 +1,6 @@
 import { FC } from 'react';
-import s from './index.module.css';
-import { Text } from '@/shared/ui/text';
 import { ModuleStatus } from 'tutor-online-global-shared';
-import classNames from 'classnames';
+import { Label } from '../label';
 
 type Props = {
     status: ModuleStatus | undefined;
@@ -35,11 +33,5 @@ export const ModuleLabel: FC<Props> = ({ status, size = 's' }) => {
 
     const { backgroundColor, text } = statusOptions[status];
 
-    return (
-        <div className={classNames(s.label, s[size])} style={{ backgroundColor }}>
-            <Text textSize={size} textColor='white'>
-                {text}
-            </Text>
-        </div>
-    );
+    return <Label text={text} size={size} backgroundColor={backgroundColor} />;
 };

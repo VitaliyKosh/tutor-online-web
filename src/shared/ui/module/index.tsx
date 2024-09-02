@@ -32,7 +32,7 @@ export const ModuleButton: FC<Props> = ({ module }) => {
         >
             <div className={s.moduleTopContainer}>
                 <div className={s.moduleNameContainer}>
-                    <Text className={s.moduleName} textSize={'xl'}>{module.name}</Text>
+                    <Text className={s.moduleName} textSize={'xl'} textColor='green'>{module.name}</Text>
                 </div>
                 <div className={s.labelContainer}>
                     <ModuleLabel status={module.status} />

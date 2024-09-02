@@ -9,6 +9,7 @@ import { ModulePageFallback } from './fallback';
 import { ModuleDto } from 'tutor-online-global-shared/dist/types/dto/module/shared';
 import { ModuleLabel } from '@/shared/ui/module-label';
 import { TheoryList } from '@/shared/ui/theory-list';
+import { TestList } from '@/shared/ui/test-list';
 
 const ModulePage: PC = (props) => {
     const { useHeaderTitle, params, useHeaderAddon } = props;
@@ -68,8 +69,13 @@ const ModulePage: PC = (props) => {
 
     const submodules = module?.modules;
     const theory = module?.theory;
+    const tests = module?.tests.filter((t) => t.isResolved);
+    const activeTests = module?.tests.filter((t) => !t.isResolved);
+
     const isShowModulesBlock = (submodules && submodules.length > 0) || modules.length > 0;
     const isShowTheoryBlock = theory && theory.length > 0;
+    const isShowTestsBlock = tests && tests.length > 0;
+    const isShowActiveTestsBlock = activeTests && activeTests.length > 0;
 
     if (moduleLoading) {
         return <ModulePageFallback {...props} />;
@@ -78,10 +84,20 @@ const ModulePage: PC = (props) => {
     return (
         <div className={s.page}>
             <div>
+                {isShowActiveTestsBlock && (
+                    <>
+                        <div className={s.modulesTitle}>
+                            <Text textType='title' textSize={'s'} textColor='yellow'>
+                                Активные тесты
+                            </Text>
+                        </div>
+                        <TestList tests={activeTests} testsLoading={false} />
+                    </>
+                )}
                 {isShowTheoryBlock && (
                     <>
                         <div className={s.modulesTitle}>
-                            <Text textType='title' textSize={'s'}>
+                            <Text textType='title' textSize={'s'} textColor='blue'>
                                 Материалы
                             </Text>
                         </div>
@@ -91,7 +107,7 @@ const ModulePage: PC = (props) => {
                 {isShowModulesBlock && (
                     <>
                         <div className={s.modulesTitle}>
-                            <Text textType='title' textSize={'s'}>
+                            <Text textType='title' textSize={'s'} textColor='green'>
                                 Модули
                             </Text>
                         </div>
@@ -100,6 +116,16 @@ const ModulePage: PC = (props) => {
                             modulesLoading={modulesLoading}
                             skeletonCount={hasState ? state.module.modules?.length : 3}
                         />
+                    </>
+                )}
+                {isShowTestsBlock && (
+                    <>
+                        <div className={s.modulesTitle}>
+                            <Text textType='title' textSize={'s'} textColor='yellow'>
+                                Пройденные тесты
+                            </Text>
+                        </div>
+                        <TestList tests={tests} testsLoading={false}  />
                     </>
                 )}
             </div>

@@ -69,27 +69,30 @@
     --text-primary: rgb(88, 84, 74);
     --text-secondary: rgb(117 112 99);
     --text-tertiary: rgb(151, 144, 127);
-    --text-primaryInverted: rgb(233, 223, 198);
-    --text-secondaryInverted: rgb(199, 190, 169);
-    --text-tertiaryInverted: rgb(153, 147, 130);
-    --text-positive: #4caf50;
+    --text-primaryInverted: rgb(243, 237, 222);
+    --text-secondaryInverted: rgb(227, 220, 202);
+    --text-tertiaryInverted: rgb(206, 198, 174);
+    --text-positive: #6ba86d;
     --text-attention: #dabc48;
     --text-negative: #f53c14;
-    --text-link: rgb(75, 132, 255);
-    --text-yellow: rgb(242 210 154);
-    --text-green: rgb(146 159 132);
-    --text-blue: rgb(137 162 167);
+    --text-red: rgb(225, 92, 92);
+    --text-link: rgb(92, 136, 232);
+    --text-yellow: rgb(225, 177, 92);
+    --text-green: rgb(141, 164, 117);
+    --text-blue: rgb(118, 153, 160);
 
     --color-primaryBg: #ffffff;
     --color-secondaryBg: rgb(237, 226, 201);
     --color-tertiaryBg: rgb(218, 207, 183);
-    --color-primaryBlockBg: rgb(233, 223, 198);
+    --color-primaryBlockBg: rgb(245, 240, 226);
     --color-secondaryBlockBg: rgb(199, 190, 169);
     --color-tertiaryBlockBg: rgb(153, 147, 130);
     
-    --separator: #757f8a;
-    --separator-alert: #f53c14;
-    --color-Math: rgb(242 210 154);
-    --color-Math-secondary: rgb(146 159 132);
-    --color-Math-third: rgb(137 162 167);
+    --color-Math-red: rgb(225, 92, 92);
+    --color-Math-yellow: rgb(225, 177, 92);
+    --color-Math-green: rgb(141, 164, 117);
+    --color-Math-blue: rgb(118, 153, 160);
+    --color-Math-positive: #6ba86d;
+    --color-Math-attention: #dabc48;
+    --color-Math-negative: #f53c14;
 }

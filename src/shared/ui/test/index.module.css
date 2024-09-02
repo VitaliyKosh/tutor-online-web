@@ -1,0 +1,27 @@
+.test {
+    width: 100%;
+    background-color: var(--color-primaryBlockBg);
+    border-radius: var(--blockBorderRadius);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px 8px 20px;
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+.testTitle {
+    flex: 1;
+    overflow: hidden;
+    overflow-wrap: break-word;
+}
+
+.labelTimer {
+    width: 70px;
+}
+
+.label {
+    padding: 0 10px
+}

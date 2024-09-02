@@ -1,7 +1,7 @@
 .module {
     width: 100%;
     background-color: var(--color-primaryBlockBg);
-    border-radius:var(--blockBorderRadius);
+    border-radius: var(--blockBorderRadius);
     display: flex;
     flex-direction: column;
     justify-content: space-between;

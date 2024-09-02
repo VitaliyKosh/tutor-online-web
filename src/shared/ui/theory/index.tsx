@@ -18,7 +18,7 @@ export const TheoryButton: FC<Props> = ({ theory }) => {
                 params: { id: theory.id },
             })}
         >
-            <Text className={s.theoryTitle} textSize={'xl'}>
+            <Text className={s.theoryTitle} textSize={'xl'} textColor='blue'>
                 {theory.title}
             </Text>
         </Link>
