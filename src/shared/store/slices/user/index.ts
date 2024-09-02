@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { UserAuthStatus, UserState } from './types';
+import { useSignOut } from './actions';
 
 const initialState: UserState = {
     authStatus: UserAuthStatus.LOADING,
@@ -14,8 +15,13 @@ export const userSlice = createSlice({
             state.user = action.payload.user;
             state.authStatus = action.payload.authStatus;
         },
+        signOut: (state) => {
+            state.user = null;
+            state.authStatus = UserAuthStatus.SIGN_OUT;
+        },
     },
 });
 
-export const { signIn } = userSlice.actions;
+export const { signIn, signOut } = userSlice.actions;
 export const user = userSlice.reducer;
+export { useSignOut };

@@ -7,7 +7,9 @@ export const NotFoundPage = () => {
     return (
         <div className={c.notFoundPage}>
             <p>Not Found</p>
-            <Link to={paths.getRoutePath(RouteNames.MAIN)}>На главную</Link>
+            <Link to={paths.getRoutePath(RouteNames.MAIN)} replace={true}>
+                На главную
+            </Link>
         </div>
     );
 };

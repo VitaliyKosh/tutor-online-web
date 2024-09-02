@@ -6,10 +6,10 @@ import { paths } from '@/shared/lib/path';
 import { RouteNames } from '@/shared/consts/paths';
 
 export const NotActivatedPage = () => {
-    const accountType = useAppSelector(s => s.user.user?.accountType);
+    const accountType = useAppSelector((s) => s.user.user?.accountType);
 
     if (accountType !== AccountTypes.NOT_ACTIVATED) {
-        return <Navigate to={paths.getRoutePath(RouteNames.MAIN)} />;
+        return <Navigate to={paths.getRoutePath(RouteNames.MAIN)} replace={true} />;
     }
 
     return (

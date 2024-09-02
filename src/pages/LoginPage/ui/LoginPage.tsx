@@ -42,7 +42,7 @@ const LoginPage: FC<LoginPageProps> = () => {
                     authStatus: UserAuthStatus.SIGN_IN,
                 }),
             );
-            navigate(paths.getRoutePath(RouteNames.MAIN));
+            navigate(paths.getRoutePath(RouteNames.MAIN), { replace: true });
         } catch (error) {
             console.log(error);
         }
@@ -53,7 +53,7 @@ const LoginPage: FC<LoginPageProps> = () => {
     };
 
     if (authStatus === UserAuthStatus.SIGN_IN) {
-        return <Navigate to={paths.getRoutePath(RouteNames.MAIN)} />;
+        return <Navigate to={paths.getRoutePath(RouteNames.MAIN)} replace={true} />;
     }
 
     return (

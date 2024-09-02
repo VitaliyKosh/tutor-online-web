@@ -30,14 +30,23 @@ export const FooterNavBar = ({
 
                     return (
                         <li key={link.key} className={s.linkLi}>
-                            <Link to={paths.getRoutePath(link.to)} className={s.link}>
+                            <Link
+                                to={paths.getRoutePath(link.to)}
+                                className={s.link}
+                                replace={true}
+                            >
                                 <Content active={link.key === activeTab} />
                                 <div
                                     className={classNames(s.linkLabel, {
                                         [s.activeLink]: link.key === activeTab,
                                     })}
                                 >
-                                    <Text textSize='s' textColor={link.key === activeTab ? 'primary' : 'tertiary'}>{link.label}</Text>
+                                    <Text
+                                        textSize='s'
+                                        textColor={link.key === activeTab ? 'primary' : 'tertiary'}
+                                    >
+                                        {link.label}
+                                    </Text>
                                 </div>
                             </Link>
                         </li>

@@ -1,4 +1,4 @@
-import { ReactNode, Suspense, useCallback, useLayoutEffect, useMemo, useState } from 'react';
+import { Suspense } from 'react';
 import { pagesProps } from '@/app/providers/router/model/page-props';
 import { RouteNames } from '@/shared/consts/paths';
 import { AppFooter } from '@/widgets/app-footer';
@@ -11,7 +11,8 @@ import { Navigate, useLocation, useParams } from 'react-router-dom';
 import { paths } from '@/shared/lib/path';
 import { AccountTypes } from 'tutor-online-global-shared';
 import { UserAuthStatus } from '@/shared/store/slices/user/types';
-import { UseHeaderAddon, UseHeaderTitle } from '@/shared/types/page';
+import { useHeaderTitleLayout } from '../hooks/use-header-title-layout';
+import { useHeaderAddonLayout } from '../hooks/use-header-addon-layout';
 
 interface Props {
     routeName: RouteNames;
@@ -28,10 +29,9 @@ export const ScreenLayout = ({ routeName }: Props) => {
         showBackButton = true,
         dynamicHeader = false,
     } = pagesProps[routeName];
-    const [dynamicTitleText, setDynamicTitleText] = useState<string | undefined>(undefined);
-    const [dynamicTitleRightAddon, setDynamicTitleRightAddon] = useState<ReactNode | undefined>(
-        undefined,
-    );
+
+    const { dynamicTitleText, useHeaderTitle } = useHeaderTitleLayout();
+    const { dynamicTitleRightAddon, useHeaderAddon } = useHeaderAddonLayout();
 
     const params = useParams();
 
@@ -42,47 +42,18 @@ export const ScreenLayout = ({ routeName }: Props) => {
     const isHeader = Boolean(dynamicTitleText || headerTitle || dynamicHeader);
     const isFooter = Boolean(tab);
 
-    const isStandaloneIphoneXValue = isStandaloneIphoneX();
-    const titleTextFromProps = headerTitle;
-
-    const useHeaderTitle: UseHeaderTitle = (value: string | undefined) => {
-        useLayoutEffect(() => {
-            setDynamicTitleText(value);
-
-            return () => {
-                setDynamicTitleText(undefined);
-            };
-        }, [value]);
-
-        return useCallback((value: string | undefined) => {
-            setDynamicTitleText(value);
-        }, []);
-    };
-
-    const useHeaderAddon: UseHeaderAddon = (value: ReactNode | undefined) => {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        const memoizedComponent = useMemo(() => value, []);
-
-        useLayoutEffect(() => {
-            setDynamicTitleRightAddon(memoizedComponent);
-
-            return () => {
-                setDynamicTitleRightAddon(undefined);
-            };
-        }, [memoizedComponent]);
-
-        return setDynamicTitleRightAddon;
-    };
+    console.log(authStatus);
+    
 
     if (
         authStatus === UserAuthStatus.SIGN_OUT &&
         location.pathname !== paths.getRoutePath(RouteNames.LOGIN)
     ) {
-        return <Navigate to={paths.getRoutePath(RouteNames.LOGIN)} />;
+        return <Navigate to={paths.getRoutePath(RouteNames.LOGIN)} replace={true} />;
     }
 
     if (!user && location.pathname !== paths.getRoutePath(RouteNames.LOGIN)) {
-        return <Navigate to={paths.getRoutePath(RouteNames.LOGIN)} />;
+        return <Navigate to={paths.getRoutePath(RouteNames.LOGIN)} replace={true} />;
     }
 
     if (
@@ -91,13 +62,15 @@ export const ScreenLayout = ({ routeName }: Props) => {
         (!user.accountType || !allowedAccountTypes.includes(user.accountType))
     ) {
         if (user.accountType === AccountTypes.NOT_ACTIVATED) {
-            return <Navigate to={paths.getRoutePath(RouteNames.NOT_ACTIVATED)} />;
+            return <Navigate to={paths.getRoutePath(RouteNames.NOT_ACTIVATED)} replace={true} />;
         } else {
-            return <Navigate to={paths.getRoutePath(RouteNames.ERROR_404)} />;
+            return <Navigate to={paths.getRoutePath(RouteNames.ERROR_404)} replace={true} />;
         }
     }
 
-    const pageKey = params.id ?? routeName;
+    const pageKey = routeName + (params.id ?? '');
+
+    const isStandaloneIphoneXValue = isStandaloneIphoneX();
 
     const pageProps = {
         className: classNames(s.page, {
@@ -115,7 +88,7 @@ export const ScreenLayout = ({ routeName }: Props) => {
         <div className={s.screenLayout}>
             {isHeader && (
                 <AppHeader
-                    header={titleTextFromProps ?? dynamicTitleText ?? ''}
+                    header={headerTitle ?? dynamicTitleText ?? ''}
                     defaultPreviousRouteName={defaultPreviousRouteName}
                     showBackButton={showBackButton}
                     rightAddon={dynamicTitleRightAddon}
