@@ -38,11 +38,13 @@ export const KeyboardLayout = ({ children }: Props) => {
 
     useEffect(() => {
         const viewportScrollHandler = () => {
+            info.log('viewportScrollHandler');
             window.scrollTo(0, 0);
         };
 
         const viewportResizeHandler = () => {
             info.log('ResizeHandler offsetTop', window.visualViewport?.offsetTop);
+            window.scrollTo(0, 0);
 
             if (window.visualViewport && window.visualViewport.offsetTop >= 0) {
                 const keyboardHeight =

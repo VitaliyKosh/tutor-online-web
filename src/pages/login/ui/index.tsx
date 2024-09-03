@@ -26,9 +26,7 @@ const LoginPage: FC<LoginPageProps> = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const authStatus = useAppSelector((s) => s.user.authStatus);
-    const [error, setError] = useState(
-        'fdslkgjhdfsjkgdahjshgfljkadhgflkdjsh fksdj hfklsdajhf lskdajhf lksdajhf lksjdhf lksjahf klsjafhlksjahdf lksafhlkasjfhlksajdfhlaksjfdh slkjfhsaklfhaklsfhs',
-    );
+    const [error, setError] = useState('');
 
     const onLoginChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
         setLogin(e.target.value);

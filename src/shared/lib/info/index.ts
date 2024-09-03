@@ -99,6 +99,12 @@ const initInfoBlock = () => {
 
     infoElement.id = INFO_BLOCK_ID;
     infoElement.classList.add('closed');
+    infoElement.addEventListener('dblclick', () => {
+        logLines = [];
+        logValues = {};
+        drawInfo();
+        drawValues();
+    });
     document.querySelector('body')?.appendChild(infoElement);
 
     const toggleVisibility = () => {
