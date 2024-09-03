@@ -1,22 +1,35 @@
 import { ButtonHTMLAttributes, FC } from 'react';
 import cls from './index.module.css';
 import classNames from 'classnames';
-
-export enum ThemeButton {
-    CLEAR = 'clear',
-}
+import { Text } from '../text';
+import { Size, TextColor } from 'tutor-online-global-shared';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
-    theme?: ThemeButton;
+    textClassName?: string;
+    textColor?: TextColor;
+    textSize: Size;
 }
 
-const Button: FC<ButtonProps> = (props) => {
-    const { className, children, theme, ...otherProps } = props;
-
+const Button: FC<ButtonProps> = ({
+    className,
+    textClassName,
+    children,
+    textColor,
+    textSize,
+    ...otherProps
+}) => {
     return (
-        <button className={classNames(cls.button, theme && cls[theme], className)} {...otherProps}>
-            {children}
+        <button
+            className={classNames(cls.button, className)}
+            {...otherProps}
+            style={{
+                ...otherProps.style,
+            }}
+        >
+            <Text className={textClassName} textSize={textSize} textColor={textColor}>
+                {children}
+            </Text>
         </button>
     );
 };

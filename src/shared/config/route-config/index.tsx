@@ -1,5 +1,5 @@
 import { AboutPage } from '@/pages/AboutPage';
-import { LoginPage } from '@/pages/LoginPage';
+import { LoginPage } from '@/pages/login';
 import { MainPage } from '@/pages/main';
 import NoPWAPage from '@/pages/no-pwa/ui';
 import { NotFoundPage } from '@/pages/not-found';

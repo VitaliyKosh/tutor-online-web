@@ -2,6 +2,8 @@
   /* background-color: $color-bg-base; */
   box-shadow: 0 0 0px 0.5px #00000020;
   position: relative;
+  transition: all 0.3s;
+  /* background-color: red; */
 }
 
 .iphonePadding {
@@ -42,4 +44,9 @@
 
 .activeLink {
   color: var(--text-primary);
+}
+
+.hide {
+  transform: translateY(100%);
+  transition: all 0.4s;
 }

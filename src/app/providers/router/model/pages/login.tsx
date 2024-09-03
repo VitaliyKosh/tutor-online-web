@@ -1,4 +1,4 @@
-import { LoginPage } from '@/pages/LoginPage';
+import { LoginPage } from '@/pages/login';
 import { ScreenLayoutProps } from '../types';
 
 export const LoginPageLayoutProps: ScreenLayoutProps = {

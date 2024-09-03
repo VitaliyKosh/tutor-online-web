@@ -11,8 +11,6 @@ export type UserStoreObject = {
     firstName: string;
     lastName: string;
     accountType: AccountTypes;
-    rootModules: string[];
-    modules: string[];
 };
 
 export type UserState = {

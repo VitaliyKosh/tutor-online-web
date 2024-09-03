@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { Suspense, useContext } from 'react';
 import { pagesProps } from '@/app/providers/router/model/page-props';
 import { RouteNames } from '@/shared/consts/paths';
 import { AppFooter } from '@/widgets/app-footer';
@@ -13,6 +13,7 @@ import { AccountTypes } from 'tutor-online-global-shared';
 import { UserAuthStatus } from '@/shared/store/slices/user/types';
 import { useHeaderTitleLayout } from '../hooks/use-header-title-layout';
 import { useHeaderAddonLayout } from '../hooks/use-header-addon-layout';
+import { KeyboardContext } from '../../keyboard/keyboard-context';
 
 interface Props {
     routeName: RouteNames;
@@ -34,6 +35,7 @@ export const ScreenLayout = ({ routeName }: Props) => {
     const { dynamicTitleRightAddon, useHeaderAddon } = useHeaderAddonLayout();
 
     const params = useParams();
+    const { isOpened: isKeyboardOpened } = useContext(KeyboardContext);
 
     const user = useAppSelector((s) => s.user.user);
     const authStatus = useAppSelector((s) => s.user.authStatus);
@@ -41,9 +43,6 @@ export const ScreenLayout = ({ routeName }: Props) => {
 
     const isHeader = Boolean(dynamicTitleText || headerTitle || dynamicHeader);
     const isFooter = Boolean(tab);
-
-    console.log(authStatus);
-    
 
     if (
         authStatus === UserAuthStatus.SIGN_OUT &&
@@ -84,6 +83,8 @@ export const ScreenLayout = ({ routeName }: Props) => {
         params: params,
     };
 
+    const isShowFooter = isFooter && tab;
+
     return (
         <div className={s.screenLayout}>
             {isHeader && (
@@ -99,8 +100,8 @@ export const ScreenLayout = ({ routeName }: Props) => {
                     <Page key={pageKey} {...pageProps} />
                 </Suspense>
             </div>
-            {isFooter && tab && (
-                <AppFooter activeTab={tab} isStandaloneIphoneX={isStandaloneIphoneXValue} />
+            {isShowFooter && (
+                <AppFooter activeTab={tab} isStandaloneIphoneX={isStandaloneIphoneXValue} isKeyboardOpened={isKeyboardOpened}/>
             )}
         </div>
     );

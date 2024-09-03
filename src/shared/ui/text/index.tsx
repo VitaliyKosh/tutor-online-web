@@ -1,4 +1,4 @@
-import { FC, AllHTMLAttributes } from 'react';
+import { FC, AllHTMLAttributes, ReactNode } from 'react';
 import c from './index.module.css';
 import classNames from 'classnames';
 import { Size, TextAlign, TextColor } from 'tutor-online-global-shared';
@@ -12,7 +12,7 @@ interface Props extends AllHTMLAttributes<HTMLParagraphElement> {
     textColor?: TextColor;
     textSize: Size;
     textAlign?: TextAlign;
-    children: string | undefined;
+    children?: ReactNode;
 }
 
 export const Text: FC<Props> = ({
@@ -24,7 +24,9 @@ export const Text: FC<Props> = ({
     children,
     ...otherProps
 }) => {
-    const text = parse(children ?? '');
+    const isString = typeof children === 'string';
+
+    console.log(isString, children);
 
     return (
         <MathJaxContext>
@@ -36,8 +38,12 @@ export const Text: FC<Props> = ({
                     textAlign: textAlign,
                 }}
                 {...otherProps}
-                dangerouslySetInnerHTML={{ __html: text.innerHTML }}
-            ></span>
+                dangerouslySetInnerHTML={
+                    isString ? { __html: parse(children).innerHTML } : undefined
+                }
+            >
+                {!isString ? children : undefined}
+            </span>
         </MathJaxContext>
     );
 };

@@ -5,15 +5,21 @@ import { PushProvider } from './providers/push/ui';
 import { StoreProvider } from './providers/store/ui/store-provider';
 import { AuthProvider } from './providers/auth-provider';
 import { GlobalLoader } from './layouts/global-loader';
+import { KeyboardLayout } from './layouts/keyboard';
+import { info } from '@/shared/lib/info';
+
+info.initInfoBlock();
 
 const App: FC = () => {
     return (
         <StoreProvider>
             <AuthProvider>
                 <PushProvider>
-                    <GlobalLoader>
-                        <RouterProvider />
-                    </GlobalLoader>
+                    <KeyboardLayout>
+                        <GlobalLoader>
+                            <RouterProvider />
+                        </GlobalLoader>
+                    </KeyboardLayout>
                 </PushProvider>
             </AuthProvider>
         </StoreProvider>

@@ -10,6 +10,7 @@ interface Props {
     iphonePadding?: boolean;
     footerLinks: FooterNavBarLink[];
     activeTab: string;
+    hide: boolean;
 }
 
 export const FooterNavBar = ({
@@ -17,11 +18,13 @@ export const FooterNavBar = ({
     iphonePadding = false,
     footerLinks,
     activeTab,
+    hide,
 }: Props) => {
     return (
         <nav
             className={classNames(s.footerNavBar, className, {
                 [s.iphonePadding]: iphonePadding,
+                [s.hide]: hide
             })}
         >
             <ul className={s.linksWrapper}>

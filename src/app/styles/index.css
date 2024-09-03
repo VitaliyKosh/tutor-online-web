@@ -6,10 +6,11 @@
 html {
     /* overscroll-behavior-y: none;
     overscroll-behavior-x: none; */
-    height: 100vh;
+    height: 100lvh;
     width: 100vw;
     position: fixed;
     overflow: hidden;
+    /* background-color: aqua; */
 } 
 
 body {

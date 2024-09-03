@@ -10,6 +10,7 @@ import { ModuleDto } from 'tutor-online-global-shared/dist/types/dto/module/shar
 import { ModuleLabel } from '@/shared/ui/module-label';
 import { TheoryList } from '@/shared/ui/theory-list';
 import { TestList } from '@/shared/ui/test-list';
+import classNames from 'classnames';
 
 const ModulePage: PC = (props) => {
     const { useHeaderTitle, params, useHeaderAddon } = props;
@@ -125,7 +126,7 @@ const ModulePage: PC = (props) => {
                                 Пройденные тесты
                             </Text>
                         </div>
-                        <TestList tests={tests} testsLoading={false}  />
+                        <TestList tests={tests} testsLoading={false} />
                     </>
                 )}
             </div>

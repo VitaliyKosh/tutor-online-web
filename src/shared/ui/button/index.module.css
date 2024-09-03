@@ -1,13 +1,6 @@
 .button {
-    cursor: pointer;
-    color: var(--primary-color);
-    user-select: none;
-}
-
-.clear {
-    padding: 0px;
-    margin: 0;
-    border: none;
-    background-color: none;
-    outline: none;
+    overflow: hidden;
+    background-color: var(--color-secondaryBg);
+    padding: 5px 10px;
+    border-radius: var(--blockBorderRadius);
 }
