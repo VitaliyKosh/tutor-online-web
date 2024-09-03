@@ -37,7 +37,13 @@ export const KeyboardLayout = ({ children }: Props) => {
     }, [isKeyboardOpened]);
 
     useEffect(() => {
-        const viewportHandler = () => {
+        const viewportScrollHandler = () => {
+            window.scrollTo(0, 0);
+        };
+
+        const viewportResizeHandler = () => {
+            info.log('ResizeHandler offsetTop', window.visualViewport?.offsetTop);
+
             if (window.visualViewport && window.visualViewport.offsetTop >= 0) {
                 const keyboardHeight =
                     window.innerHeight -
@@ -70,14 +76,14 @@ export const KeyboardLayout = ({ children }: Props) => {
             passive: false,
         });
 
-        window.visualViewport?.addEventListener('scroll', viewportHandler);
-        window.visualViewport?.addEventListener('resize', viewportHandler);
+        window.visualViewport?.addEventListener('scroll', viewportScrollHandler);
+        window.visualViewport?.addEventListener('resize', viewportResizeHandler);
 
         return () => {
             document.removeEventListener('touchstart', preventZoom);
             document.removeEventListener('touchmove', preventZoom);
-            window.visualViewport?.removeEventListener('scroll', viewportHandler);
-            window.visualViewport?.removeEventListener('resize', viewportHandler);
+            window.visualViewport?.removeEventListener('scroll', viewportScrollHandler);
+            window.visualViewport?.removeEventListener('resize', viewportResizeHandler);
         };
     }, []);
 
