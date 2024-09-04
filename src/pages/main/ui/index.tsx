@@ -1,43 +1,52 @@
-import { RouteNames } from '@/shared/consts/paths';
-import { info } from '@/shared/lib/info';
-import { paths } from '@/shared/lib/path';
 import { useSignOut } from '@/shared/store/slices/user';
 import { PC } from '@/shared/types/page';
-import { Link } from 'react-router-dom';
+import { Text } from '@/shared/ui/text';
+import { TestList } from '@/shared/ui/test-list';
+import { SubTest } from 'tutor-online-global-shared';
+import s from './index.module.css';
+import TestService from '@/shared/api-services/test-service';
+import { useEffect, useState } from 'react';
+import { Gap } from '@/shared/ui/gap';
 
-const MainPage: PC = ({ useHeaderTitle }) => {
+const MainPage: PC = () => {
     const { signOut } = useSignOut();
-    useHeaderTitle('Виталий Кошельков');
+    const [activeTests, setActiveTests] = useState<SubTest[]>([]);
+    const [resolvedTests, setResolvedTests] = useState<SubTest[]>([]);
+    const [testsLoading, setTestsLoading] = useState<boolean>(true);
+
+    const getUserActiveTests = async () => {
+        try {
+            const res = await TestService.getUserActiveTests();
+            setActiveTests(res.data.activeTests);
+            setResolvedTests(res.data.resolvedTests);
+            console.log(res.data.resolvedTests);
+        } finally {
+            setTestsLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        getUserActiveTests();
+    }, []);
 
     return (
-        <div>
-            <Link to={paths.getRoutePath(RouteNames.SDUI)}>
-                <button>go to SDUI</button>
-            </Link>
-            <input type='text' />
-
-            <button onClick={signOut}>signOutAction</button>
-            <div>
-                <button
-                    onClick={() =>
-                        info.log({ a: 'hello fdjghdfjklsgh dklfjsgh kdlsjghdklsjghsdlk ghsdklgd' })
-                    }
-                >
-                    {' '}
-                    info.log('hello');
-                </button>
-            </div>
-            <div>
-                <button onClick={() => info.logValue('easd2', 'sad')}>
-                    {' '}
-                    info.log('he3213e21312llo');
-                </button>
-            </div>
-            <div>
-                <button onClick={() => info.showInfoBlock()}> showInfoBlock</button>
-            </div>
-            <div>
-                <button onClick={() => info.hideInfoBlock()}>hideInfoBlock</button>
+        <div className={s.page}>
+            <Text textType='title' textSize={'s'}>
+                Тесты
+            </Text>
+            <Gap size={'m'} />
+            <div className={s.tests}>
+                <Text textType='title' textSize={'xs'}>
+                    Активные
+                </Text>
+                <Gap size={'m'} />
+                <TestList tests={activeTests} skeletonCount={2} testsLoading={testsLoading} />
+                <Gap size={'l'} />
+                <Text textType='title' textSize={'xs'}>
+                    Последние
+                </Text>
+                <Gap size={'m'} />
+                <TestList tests={resolvedTests} skeletonCount={2} testsLoading={testsLoading} />
             </div>
         </div>
     );

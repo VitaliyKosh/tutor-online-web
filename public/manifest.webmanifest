@@ -1,6 +1,6 @@
 {
-    "name": "Репетитор онлайн",
-    "short_name": "Репетитор",
+    "name": "Ежедневник",
+    "short_name": "Ежедневник",
     "description": "Сервис онлайн занятий",
     "scope": "/app/",
     "start_url": "/app/",

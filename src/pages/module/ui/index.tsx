@@ -10,7 +10,7 @@ import { ModuleDto } from 'tutor-online-global-shared/dist/types/dto/module/shar
 import { ModuleLabel } from '@/shared/ui/module-label';
 import { TheoryList } from '@/shared/ui/theory-list';
 import { TestList } from '@/shared/ui/test-list';
-import classNames from 'classnames';
+import { Gap } from '@/shared/ui/gap';
 
 const ModulePage: PC = (props) => {
     const { useHeaderTitle, params, useHeaderAddon } = props;
@@ -87,46 +87,46 @@ const ModulePage: PC = (props) => {
             <div>
                 {isShowActiveTestsBlock && (
                     <>
-                        <div className={s.modulesTitle}>
-                            <Text textType='title' textSize={'s'} textColor='yellow'>
-                                Активные тесты
-                            </Text>
-                        </div>
+                        <Text textType='title' textSize={'s'} textColor='yellow'>
+                            Активные тесты
+                        </Text>
+                        <Gap size={'m'} />
                         <TestList tests={activeTests} testsLoading={false} />
+                        <Gap size={'xl'} />
                     </>
                 )}
                 {isShowTheoryBlock && (
                     <>
-                        <div className={s.modulesTitle}>
-                            <Text textType='title' textSize={'s'} textColor='blue'>
-                                Материалы
-                            </Text>
-                        </div>
+                        <Text textType='title' textSize={'s'} textColor='blue'>
+                            Материалы
+                        </Text>
+                        <Gap size={'m'} />
                         <TheoryList theory={theory} theoryLoading={false} />
+                        <Gap size={'xl'} />
                     </>
                 )}
                 {isShowModulesBlock && (
                     <>
-                        <div className={s.modulesTitle}>
-                            <Text textType='title' textSize={'s'} textColor='green'>
-                                Модули
-                            </Text>
-                        </div>
+                        <Text textType='title' textSize={'s'} textColor='green'>
+                            Модули
+                        </Text>
+                        <Gap size={'m'} />
                         <ModuleList
                             modules={modules}
                             modulesLoading={modulesLoading}
                             skeletonCount={hasState ? state.module.modules?.length : 3}
                         />
+                        <Gap size={'xl'} />
                     </>
                 )}
                 {isShowTestsBlock && (
                     <>
-                        <div className={s.modulesTitle}>
-                            <Text textType='title' textSize={'s'} textColor='yellow'>
-                                Пройденные тесты
-                            </Text>
-                        </div>
+                        <Text textType='title' textSize={'s'} textColor='yellow'>
+                            Пройденные тесты
+                        </Text>
+                        <Gap size={'m'} />
                         <TestList tests={tests} testsLoading={false} />
+                        <Gap size={'xl'} />
                     </>
                 )}
             </div>

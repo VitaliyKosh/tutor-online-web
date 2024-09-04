@@ -60,7 +60,7 @@
     --page-padding: 20px;
 
     --iphone-x-padding: 34px;
-    --footer-height: 70px;
+    --footer-height: 65px;
 
     /* colors */
 
@@ -82,8 +82,8 @@
     --text-blue: rgb(118, 153, 160);
 
     --color-primaryBg: #ffffff;
-    --color-secondaryBg: rgb(237, 226, 201);
-    --color-tertiaryBg: rgb(218, 207, 183);
+    --color-secondaryBg: rgb(251, 248, 243);
+    --color-tertiaryBg: rgb(217, 210, 192);
     --color-primaryBlockBg: rgb(245, 240, 226);
     --color-onPrimaryBlock: rgb(213, 208, 195);
     --color-secondaryBlockBg: rgb(199, 190, 169);

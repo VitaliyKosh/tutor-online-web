@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import s from './index.module.css';
 import { TestButton } from '../test';
-import { SubTest } from 'tutor-online-global-shared/dist/types/dto/module/shared';
+import { SubTest } from 'tutor-online-global-shared';
 import { TestListSkeleton } from './skeleton';
 
 type Props = {

@@ -96,7 +96,7 @@ export const ScreenLayout = ({ routeName }: Props) => {
                 />
             )}
             <div className={s.pageWrapper}>
-                <Suspense fallback={Fallback ? <Fallback {...pageProps} /> : ''}>
+                <Suspense fallback={Fallback ? <Fallback {...pageProps} /> : 'ererwere'}>
                     <Page key={pageKey} {...pageProps} />
                 </Suspense>
             </div>
