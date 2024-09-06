@@ -14,6 +14,7 @@ import { UserAuthStatus } from '@/shared/store/slices/user/types';
 import { useHeaderTitleLayout } from '../hooks/use-header-title-layout';
 import { useHeaderAddonLayout } from '../hooks/use-header-addon-layout';
 import { KeyboardContext } from '../../keyboard/keyboard-context';
+import { usePwaGate } from '../hooks/use-pwa-gate';
 
 interface Props {
     routeName: RouteNames;
@@ -40,6 +41,8 @@ export const ScreenLayout = ({ routeName }: Props) => {
     const user = useAppSelector((s) => s.user.user);
     const authStatus = useAppSelector((s) => s.user.authStatus);
     const location = useLocation();
+
+    usePwaGate();
 
     const isHeader = Boolean(dynamicTitleText || headerTitle || dynamicHeader);
     const isFooter = Boolean(tab);
@@ -101,7 +104,11 @@ export const ScreenLayout = ({ routeName }: Props) => {
                 </Suspense>
             </div>
             {isShowFooter && (
-                <AppFooter activeTab={tab} isStandaloneIphoneX={isStandaloneIphoneXValue} isKeyboardOpened={isKeyboardOpened}/>
+                <AppFooter
+                    activeTab={tab}
+                    isStandaloneIphoneX={isStandaloneIphoneXValue}
+                    isKeyboardOpened={isKeyboardOpened}
+                />
             )}
         </div>
     );

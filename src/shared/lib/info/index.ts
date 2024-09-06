@@ -4,7 +4,7 @@ const INFO_BLOCK_ID = 'info-block';
 const INFO_BLOCK_CLOSE_BUTTON_ID = 'info-block-close-button';
 const INFO_BLOCK_VALUES_ID = 'info-block-values';
 const INFO_BLOCK_CONSOLE_ID = 'info-block-console';
-const LS_INFO_BLOCK_KEY = 'info-block-visible';
+export const LS_INFO_BLOCK_KEY = 'info-block-visible';
 
 let logValues: Record<string, string> = {};
 let logLines: string[] = [];

@@ -1,6 +1,3 @@
-import classNames from 'classnames';
-
-import s from './index.module.css';
 import { SduiElementComponent } from '../../types';
 import { TextSduiElement } from '../text';
 import { SDUIElement } from 'tutor-online-global-shared';

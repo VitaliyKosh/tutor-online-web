@@ -18,7 +18,7 @@ export const PageError: FC<PropsWithChildren<PageErrorProps>> = ({
     return (
         <div className={classNames(cls.pageError, className)}>
             <p>неизвестная ошибка</p>
-            <Button onClick={reloadPage}>обновить</Button>
+            <Button onClick={reloadPage} textSize={'s'}>обновить</Button>
             <a href='/app'>на главную</a>
         </div>
     );

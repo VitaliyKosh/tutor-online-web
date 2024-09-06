@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, interactive-widget=resizes-content" />
     <link rel="manifest" href="/manifest.webmanifest">
     <!-- <script>if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/serviceWorker.js', { scope: '/' })})}</script> -->
@@ -13,23 +13,8 @@
       <div class="pageWrapper">
         <div class="loaderWrapper">
           <div class="loader">
-            <div class="minusWrapper">
-              <div class="minus"></div>
-            </div>
-            <div class="plusWrapper">
-              <div class="plus plus1"></div>
-              <div class="plus plus2"></div>
-            </div>
-            <div class="multiplyWrapper">
-              <div class="multiply multiply1"></div>
-              <div class="multiply multiply2"></div>
-            </div>
-            <div class="equalsWrapper">
-              <div class="equals">
-                <div class="equalsElement"></div>
-                <div class="equalsElement"></div>
-              </div>
-            </div>
+            <img class="hedgehog" src="/icons/app-icon.webp"/>
+            <div class="eye"></div>
           </div>
         </div>
       </div>
@@ -37,6 +22,11 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
+  <script>
+    if (!location.pathname.startsWith('/app')) {
+      document.querySelector('#splash').remove();
+    }
+  </script>
   <style>
     #splash {
       background-color: #FFFFFF;
@@ -64,232 +54,85 @@
     }
     
     .loaderWrapper {
-      width: 50vmin;
-      height: 50vmin;
+      width: 62.5vmin;
+      height: 62.5vmin;
     }
     
     .loader {
-      height: 100%;
-      width: 100%;
-      display: grid;
-      gap: 10%;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      
-    }
-    
-    .minusWrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation-delay: 0s;
-    }
-    
-    .minus {
-      width: 100%;
-      height: 20%;
-      background-color: var(--text-primary);
-      border-radius: 50px;
-      animation: rotateMinus 3s infinite;
-    }
-    
-    .plusWrapper {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       position: relative;
-      animation-delay: 2s;
     }
-    
-    .plus {
-      background-color: var(--text-primary);
-      border-radius: 50px;
-      animation: rotatePlus 3s infinite;
-    }
-    
-    .plus1 {
-      width: 20%;
-      height: 100%;
-    }
-    
-    .plus2 {
+
+    .hedgehog {
       width: 100%;
-      height: 20%;
+    }
+
+    .eye {
+      height: 5.6%;
+      width: 6.2%;
+      background-color: rgb(253, 246, 209);
+
       position: absolute;
+      border-radius: 50%;
+      top: 35.1%;
+      left: 30%;
+      transform: rotateX(90deg);
+      animation: eyeAnimation 10s infinite;
     }
-    
-    .multiplyWrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      transform: rotate(45deg);
-      animation-delay: 4s;
-    }
-    
-    .multiply {
-      background-color: var(--text-primary);
-      border-radius: 50px;
-      animation: rotateMultiply 3s infinite;
-    }
-    
-    .multiply1 {
-      width: 20%;
-      height: 120%;
-    }
-    
-    .multiply2 {
-      width: 120%;
-      height: 20%;
-      position: absolute;
-    }
-    
-    .equalsWrapper {
-      animation-delay: 10s;
-    }
-    
-    .equals {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 30%;
-    }
-    
-    .equalsElement {
-      width: 100%;
-      height: 20%;
-      background-color: var(--text-primary);
-      border-radius: 50px;
-    }
-    
-    .minusWrapper, .plusWrapper, .multiplyWrapper, .equalsWrapper {
-      opacity: 0;
-      animation: fadeIn 1s forwards;
-    }
-    
-    .minus, .plus, .multiply, .equals {
-      /* border-radius: 50px; */
-      /* animation: rotateMinus 3s infinite; */
-      animation-delay: 0.2s;
-    }
-    
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
+
+    @keyframes eyeAnimation {
+      4% {
+        transform: rotateX(90deg);
+        top: 32.5%;
       }
-    }
-    
-    @keyframes rotateMinus {
-      0% {
+      6% {
         transform: rotate(0deg);
+        top: 35.1%;
       }
-      10% {
+      8% {
+        transform: rotateX(90deg);
+        top: 32.5%;
+      }
+      34% {
+        transform: rotateX(90deg);
+        top: 32.5%;
+      }
+      36% {
         transform: rotate(0deg);
+        top: 35.1%;
       }
-      20% {
-        transform: rotate(0deg);
-      }
-      30% {
-        transform: rotate(90deg);
-      }
-      40% {
-        transform: rotate(90deg);
+      38% {
+        transform: rotateX(90deg);
+        top: 32.5%;
       }
       50% {
-        transform: rotate(90deg);
+        transform: rotateX(90deg);
+        top: 32.5%;
       }
-      60% {
-        transform: rotate(90deg);
-      }
-      70% {
-        transform: rotate(90deg);
-      }
-      80% {
+      52% {
         transform: rotate(0deg);
+        top: 35.1%;
       }
-      90% {
+      54% {
+        transform: rotateX(90deg);
+        top: 32.5%;
+      }
+      84% {
+        transform: rotateX(90deg);
+        top: 32.5%;
+      }
+      86% {
         transform: rotate(0deg);
+        top: 35.1%;
+      }
+      88% {
+        transform: rotateX(90deg);
+        top: 32.5%;
       }
       100% {
-        transform: rotate(0deg);
+        transform: rotateX(90deg);
+        top: 32.5%;
       }
     }
-    
-    
-    @keyframes rotatePlus {
-      0% {
-        transform: rotate(0deg);
-      }
-      10% {
-        transform: rotate(0deg);
-      }
-      20% {
-        transform: rotate(0deg);
-      }
-      30% {
-        transform: rotate(0deg);
-      }
-      40% {
-        transform: rotate(0deg);
-      }
-      50% {
-        transform: rotate(0deg);
-      }
-      60% {
-        transform: rotate(90deg);
-      }
-      70% {
-        transform: rotate(90deg);
-      }
-      80% {
-        transform: rotate(90deg);
-      }
-      90% {
-        transform: rotate(90deg);
-      }
-      100% {
-        transform: rotate(0deg);
-      }
-    }
-    
-    @keyframes rotateMultiply {
-      0% {
-        transform: rotate(90deg);
-      }
-      10% {
-        transform: rotate(90deg);
-      }
-      20% {
-        transform: rotate(0deg);
-      }
-      30% {
-        transform: rotate(0deg);
-      }
-      40% {
-        transform: rotate(0deg);
-      }
-      50% {
-        transform: rotate(0deg);
-      }
-      60% {
-        transform: rotate(0deg);
-      }
-      70% {
-        transform: rotate(90deg);
-      }
-      80% {
-        transform: rotate(90deg);
-      }
-      90% {
-        transform: rotate(90deg);
-      }
-      100% {
-        transform: rotate(90deg);
-      }
-    }
+
   </style>
 </html>

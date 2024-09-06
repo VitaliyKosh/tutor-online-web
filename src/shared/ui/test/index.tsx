@@ -4,7 +4,7 @@ import { Text } from '@/shared/ui/text';
 import { Link } from 'react-router-dom';
 import { paths } from '@/shared/lib/path';
 import { RouteNames } from '@/shared/consts/paths';
-import { SubTest } from 'tutor-online-global-shared/dist/types/dto/module/shared';
+import { SubTest } from 'tutor-online-global-shared';
 import { useTimer } from '@/shared/hooks/use-timer';
 import { Label } from '../label';
 import classNames from 'classnames';

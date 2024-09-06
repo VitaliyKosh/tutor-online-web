@@ -26,8 +26,6 @@ export const Text: FC<Props> = ({
 }) => {
     const isString = typeof children === 'string';
 
-    console.log(isString, children);
-
     return (
         <MathJaxContext>
             <span

@@ -22,7 +22,7 @@ export const BugButton: FC<BugButtonProps> = (props) => {
     }, [error]);
 
     return (
-        <Button onClick={throwError} {...otherProps}>
+        <Button textSize={'s'} onClick={throwError} {...otherProps}>
             {'Throw Error'}
         </Button>
     );

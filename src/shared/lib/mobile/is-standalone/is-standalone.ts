@@ -1,1 +1,1 @@
-export const isStandalone = () => window.matchMedia('(display-mode: standalone)').matches;
+export const getIsStandalone = () => window.matchMedia('(display-mode: standalone)').matches;
