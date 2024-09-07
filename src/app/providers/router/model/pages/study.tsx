@@ -4,7 +4,7 @@ import { ScreenLayoutProps } from '../types';
 import { AccountTypes } from 'tutor-online-global-shared';
 import { StudyPageFallback } from '@/pages/study/ui/fallback';
 
-export const StudyPageLayoutProps: ScreenLayoutProps = {
+export const studyPageLayoutProps: ScreenLayoutProps = {
     Page: StudyPage,
     Fallback: StudyPageFallback,
     headerTitle: 'Обучение',

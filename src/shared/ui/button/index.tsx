@@ -3,12 +3,14 @@ import cls from './index.module.css';
 import classNames from 'classnames';
 import { Text } from '../text';
 import { Size, TextColor } from 'tutor-online-global-shared';
+import { TextType } from 'tutor-online-global-shared/dist/types/sdui/elements/text';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
     textClassName?: string;
     textColor?: TextColor;
     textSize: Size;
+    textType?: TextType 
 }
 
 const Button: FC<ButtonProps> = ({
@@ -17,6 +19,7 @@ const Button: FC<ButtonProps> = ({
     children,
     textColor,
     textSize,
+    textType,
     ...otherProps
 }) => {
     return (
@@ -27,7 +30,7 @@ const Button: FC<ButtonProps> = ({
                 ...otherProps.style,
             }}
         >
-            <Text className={textClassName} textSize={textSize} textColor={textColor}>
+            <Text textType={textType} className={textClassName} textSize={textSize} textColor={textColor}>
                 {children}
             </Text>
         </button>

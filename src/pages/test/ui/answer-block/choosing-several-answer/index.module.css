@@ -1,0 +1,15 @@
+.choosingAnswer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    .answer {
+        width: calc(50% - 5px);
+        background-color: var(--color-primaryBlockBg);
+    }
+
+    .selected {
+        background-color: var(--color-Math-yellow);
+    }
+}

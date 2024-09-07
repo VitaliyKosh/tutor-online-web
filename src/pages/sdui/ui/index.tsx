@@ -2,6 +2,7 @@ import { PC } from '@/shared/types/page';
 import s from './index.module.css';
 import { SduiWidget } from '@/shared/ui/sdui-widget';
 import { SDUIWidget } from 'tutor-online-global-shared';
+import { useLocation } from 'react-router-dom';
 
 const data: SDUIWidget = {
     elements: [
@@ -236,7 +237,11 @@ const data: SDUIWidget = {
 };
 
 const SDUIPage: PC = ({ useHeaderTitle }) => {
+    const location = useLocation();
     useHeaderTitle('Заголовок');
+
+    console.log(location);
+    
 
     return (
         <div className={s.page}>

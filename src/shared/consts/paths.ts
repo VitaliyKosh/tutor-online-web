@@ -14,6 +14,7 @@ export enum RouteNames {
     NOT_ACTIVATED = 'NOT_ACTIVATED',
     MODULE = 'MODULE',
     SDUI = 'SDUI',
+    TEST = 'TEST',
 }
 
 export const routePaths: Record<RouteNames | GlobalRouteNames, string> = {
@@ -29,5 +30,6 @@ export const routePaths: Record<RouteNames | GlobalRouteNames, string> = {
     [RouteNames.ERROR_404]: '/app/notFound',
     [RouteNames.NOT_ACTIVATED]: '/app/notActivated',
     [RouteNames.MODULE]: '/app/module/:id',
-    [RouteNames.SDUI]: '/app/sdui',
+    [RouteNames.SDUI]: '/app/sdui/:id',
+    [RouteNames.TEST]: '/app/test/:id',
 };

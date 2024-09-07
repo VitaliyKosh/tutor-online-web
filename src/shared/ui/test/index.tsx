@@ -25,7 +25,7 @@ export const TestButton: FC<Props> = ({ test }) => {
     return (
         <Link
             className={classNames(s.test, {[s.disabled]: isExpired})}
-            to={paths.getRoutePath(RouteNames.SDUI, {
+            to={paths.getRoutePath(RouteNames.TEST, {
                 params: { id: test.id },
             })}
         >

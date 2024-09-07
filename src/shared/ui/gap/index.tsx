@@ -3,11 +3,12 @@ import s from './index.module.css';
 import classNames from 'classnames';
 import { Size } from 'tutor-online-global-shared';
 
+type Sizes = Size | 'iphoneX';
 interface Props {
-    size: Size;
+    size: Sizes;
 }
 
-const sizeMapping: Record<Size, number> = {
+const sizeMapping: Record<Sizes, number> = {
     '3xs': 2,
     '2xs': 3,
     xs: 5,
@@ -17,6 +18,7 @@ const sizeMapping: Record<Size, number> = {
     xl: 30,
     '2xl': 40,
     '3xl': 60,
+    iphoneX: 34,
 };
 
 export const Gap: FC<Props> = ({ size }) => {

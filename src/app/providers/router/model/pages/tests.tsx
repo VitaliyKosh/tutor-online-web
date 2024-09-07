@@ -3,7 +3,7 @@ import { MainPage } from '@/pages/main';
 import { ScreenLayoutProps } from '../types';
 import { AccountTypes } from 'tutor-online-global-shared';
 
-export const TestsPageLayoutProps: ScreenLayoutProps = {
+export const testsPageLayoutProps: ScreenLayoutProps = {
     Page: MainPage,
     headerTitle: 'Тесты',
     tab: FooterTabs.TESTS,

@@ -10,8 +10,6 @@ interface Props {
 }
 
 export const SduiWidget = ({ className, data }: Props) => {
-    console.log(data.elements);
-
     return (
         <div className={classNames(s.sduiWidget, className)}>
             {data.elements.map((sduiElement, i) => {

@@ -13,16 +13,10 @@ a {
     -webkit-touch-callout: none;
 }
 
-/* ✓ Avoid Content Selection */
-button, label {
-    user-select: none;
-    -webkit-user-select: none;
-}
-
 /* ✓ Tap Highlight color */
-button {
-    -webkit-tap-highlight-color: #ffffff;
-}
+/* button {
+    -webkit-tap-highlight-color: #ff000040;
+} */
 
 /* ✓ @media Standalone mode */
 @media (display-mode: standalone) {
@@ -38,9 +32,10 @@ button {
 }
 
 link[rel="manifest"] {
-        --pwacompat-splash-font: 24px Verdana;
+    --pwacompat-splash-font: 24px Verdana;
 }
 
 * {
     user-select: none;
+    -webkit-user-select: none;
 }
