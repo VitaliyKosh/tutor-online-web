@@ -16,8 +16,8 @@ export const TestList: FC<Props> = ({ tests, testsLoading, skeletonCount }) => {
             {testsLoading ? (
                 <TestListSkeleton skeletonCount={skeletonCount} />
             ) : (
-                tests.flat().map((t) => {
-                    return <TestButton key={t.id} test={t} />;
+                tests.flat().map((t, i) => {
+                    return <TestButton key={t.id + i} test={t} />;
                 })
             )}
         </div>

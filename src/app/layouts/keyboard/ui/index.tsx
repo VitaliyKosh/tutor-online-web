@@ -20,7 +20,6 @@ export const KeyboardLayout = ({ children }: Props) => {
     useEffect(() => {
         info.log('isKeyboardOpened', isKeyboardOpened);
         if (isKeyboardOpened) {
-            window.scrollTo(0, 0);
             disablePageScroll();
             info.logValue('keyboard', true);
             info.logValue('scrollState', getScrollState());
@@ -28,36 +27,26 @@ export const KeyboardLayout = ({ children }: Props) => {
             enablePageScroll();
             info.logValue('keyboard', false);
             info.logValue('scrollState', getScrollState());
-            if (!getScrollState()) {
-                setTimeout(() => {
-                    enablePageScroll();
-                }, 500);
-            }
         }
     }, [isKeyboardOpened]);
 
     useEffect(() => {
         const viewportScrollHandler = () => {
-            info.log('viewportScrollHandler');
             window.scrollTo(0, 0);
         };
 
         const viewportResizeHandler = () => {
-            info.log('ResizeHandler offsetTop', window.visualViewport?.offsetTop);
-            window.scrollTo(0, 0);
+            if (!window.visualViewport) {
+                return;
+            }
 
-            if (window.visualViewport && window.visualViewport.offsetTop >= 0) {
-                const keyboardHeight =
-                    window.innerHeight -
-                    window.visualViewport.height -
-                    window.visualViewport.offsetTop;
+            const keyboardHeight =
+                window.visualViewport.offsetTop ||
+                window.innerHeight - window.visualViewport?.height;
 
-                if (keyboardHeight < 0) {
-                    return;
-                }
+            info.log('keyboardHeight', keyboardHeight);
 
-                info.log('keyboardHeight', keyboardHeight);
-
+            if (keyboardHeight >= 0) {
                 document.getElementById(
                     'keyboard-h',
                 )!.style.height = `calc(100vh - ${keyboardHeight}px)`;

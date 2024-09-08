@@ -7,6 +7,7 @@ import s from './index.module.css';
 import TestService from '@/shared/api-services/test-service';
 import { useEffect, useState } from 'react';
 import { Gap } from '@/shared/ui/gap';
+import { info } from '@/shared/lib/info';
 
 const MainPage: PC = () => {
     const { signOut } = useSignOut();
@@ -19,7 +20,6 @@ const MainPage: PC = () => {
             const res = await TestService.getUserActiveTests();
             setActiveTests(res.data.activeTests);
             setResolvedTests(res.data.resolvedTests);
-            console.log(res.data.resolvedTests);
         } finally {
             setTestsLoading(false);
         }
@@ -48,6 +48,7 @@ const MainPage: PC = () => {
                 <Gap size={'m'} />
                 <TestList tests={resolvedTests} skeletonCount={2} testsLoading={testsLoading} />
             </div>
+            <button onClick={() => info.showInfoBlock()}>dev</button>
         </div>
     );
 };
