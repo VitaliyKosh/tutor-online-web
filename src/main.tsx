@@ -1,14 +1,15 @@
-import { createRoot } from 'react-dom/client';
-
-import './index.css';
-import App from '@/app/app';
+import AppComponent from '@/app/app';
 import React from 'react';
 import { ErrorBoundary } from './app/providers/ErrorBoundary';
+import { app } from '@/core/app';
+import { createRoot } from 'react-dom/client';
+
+app.initGlobalApp();
 
 createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <ErrorBoundary>
-            <App />
+            <AppComponent />
         </ErrorBoundary>
     </React.StrictMode>,
 );

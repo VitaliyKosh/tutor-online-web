@@ -8,12 +8,15 @@ import TestService from '@/shared/api-services/test-service';
 import { useEffect, useState } from 'react';
 import { Gap } from '@/shared/ui/gap';
 import { info } from '@/shared/lib/info';
+import { counter } from '@/core/app';
 
 const MainPage: PC = () => {
     const { signOut } = useSignOut();
     const [activeTests, setActiveTests] = useState<SubTest[]>([]);
     const [resolvedTests, setResolvedTests] = useState<SubTest[]>([]);
     const [testsLoading, setTestsLoading] = useState<boolean>(true);
+    const counterValue = counter.useCounter();
+    const counterValue2 = counter.useCounter2();
 
     const getUserActiveTests = async () => {
         try {
@@ -49,6 +52,9 @@ const MainPage: PC = () => {
                 <TestList tests={resolvedTests} skeletonCount={2} testsLoading={testsLoading} />
             </div>
             <button onClick={() => info.showInfoBlock()}>dev</button>
+            <Gap size={'xl'} />
+            <div>{counterValue}</div>
+            <div>{counterValue2}</div>
         </div>
     );
 };
