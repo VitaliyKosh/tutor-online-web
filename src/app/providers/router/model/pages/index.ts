@@ -1,9 +1,0 @@
-export { MainPageLayoutProps } from './main';
-export { ErrorPageLayoutProps } from './error-page';
-export { MainMenuPageLayoutProps } from './main-menu';
-export { TestsPageLayoutProps } from './tests';
-export { StudyPageLayoutProps } from './study';
-export { ProgressPageLayoutProps } from './progress';
-export { NotFoundPageLayoutProps } from './not-found';
-export { LoginPageLayoutProps } from './login';
-export { NotActivatedPageLayoutProps } from './not-activated';

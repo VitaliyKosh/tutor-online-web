@@ -1,0 +1,99 @@
+:root {
+    --font-family-text: Main Font, helvetica, "Times New Roman", serif;
+    --font-family-title: Main Font, helvetica, "Times New Roman", serif;
+    
+    /* sizes */
+
+    /* text */
+    
+    --text-size-xs: 12px;
+    --text-line-xs: 16px;
+    --text-xs: var(--text-size-xs) / var(--text-line-xs) var(--font-family-text);
+
+    --text-size-s: 13px;
+    --text-line-s: 16px;
+    --text-s: var(--text-size-s) / var(--text-line-s) var(--font-family-text);
+
+    --text-size-m: 14px;
+    --text-line-m: 18px;
+    --text-m: var(--text-size-m) / var(--text-line-m) var(--font-family-text);
+
+    --text-size-l: 16px;
+    --text-line-l: 20px;
+    --text-l: var(--text-size-l) / var(--text-line-l) var(--font-family-text);
+
+    --text-size-xl: 18px;
+    --text-line-xl: 24px;
+    --text-xl: var(--text-size-xl) / var(--text-line-xl) var(--font-family-text);
+
+    /* title  */
+
+    --title-weight: 700;
+
+    --title-size-xs: 16px;
+    --title-line-xs: 20px;
+    --title-xs: var(--title-weight) var(--title-size-xs) / var(--title-line-xs) var(--font-family-title);
+
+    --title-size-s: 20px;
+    --title-line-s: 28px;
+    --title-s: var(--title-weight) var(--title-size-s) / var(--title-line-s) var(--font-family-title);
+
+    --title-size-m: 26px;
+    --title-line-m: 32px;
+    --title-m: var(--title-weight) var(--title-size-m) / var(--title-line-m) var(--font-family-title);
+
+    --title-size-l: 30px;
+    --title-line-l: 36px;
+    --title-l: var(--title-weight) var(--title-size-l) / var(--title-line-l) var(--font-family-title);
+
+    --title-size-xl: 34px;
+    --title-line-xl: 40px;
+    --title-xl: var(--title-weight) var(--title-size-xl) / var(--title-line-xl) var(--font-family-title);
+
+
+    /* --border-radius: 20px;
+    --box-shadow: 0 0 10px 5px #00000015;
+    --box-shadow-inset: inset -2px -2px 7px 0px #00000020;
+    --page-box-shadow: 0 0 30px 5px #00000015; */
+
+    --blockBorderRadius: 20px;
+    --page-padding: 20px;
+
+    --iphone-x-padding: 34px;
+    --footer-height: 65px;
+
+    /* colors */
+
+    --text-white: rgb(255, 255, 255);
+    --text-black: rgb(0, 0, 0);
+    --text-primary: rgb(88, 84, 74);
+    --text-secondary: rgb(117 112 99);
+    --text-tertiary: rgb(151, 144, 127);
+    --text-primaryInverted: rgb(243, 237, 222);
+    --text-secondaryInverted: rgb(227, 220, 202);
+    --text-tertiaryInverted: rgb(206, 198, 174);
+    --text-positive: #6ba86d;
+    --text-attention: #dabc48;
+    --text-negative: #f53c14;
+    --text-red: rgb(225, 92, 92);
+    --text-link: rgb(92, 136, 232);
+    --text-yellow: rgb(225, 177, 92);
+    --text-green: rgb(141, 164, 117);
+    --text-blue: rgb(118, 153, 160);
+
+    --color-primaryBg: #ffffff;
+    --color-secondaryBg: rgb(251, 248, 243);
+    --color-tertiaryBg: rgb(217, 210, 192);
+    --color-primaryBlockBg: rgb(245, 240, 226);
+    --color-onPrimaryBlock: rgb(213, 208, 195);
+    --color-secondaryBlockBg: rgb(199, 190, 169);
+    --color-tertiaryBlockBg: rgb(153, 147, 130);
+    
+    --color-Math-red: rgb(225, 92, 92);
+    --color-Math-yellow: rgb(225, 177, 92);
+    --color-Math-green: rgb(141, 164, 117);
+    --color-Math-blue: rgb(118, 153, 160);
+    --color-Math-positive: #6ba86d;
+    --color-Math-attention: #dabc48;
+    --color-Math-negative: #f53c14;
+}

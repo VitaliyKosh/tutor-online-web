@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Нет сети</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Вы оффлайн</h1>
+        <p class="text">Пожалуйста, проверьте ваше интернет-соединение.</p>
+        <button class="button" onclick="location.reload()">Перезагрузить</button>
+    </div>
+</body>
+<style>
+    body {
+        width: 100%;
+        height: 100lvh;
+        display: flex;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        font-family: Helvetica, sans-serif;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+        justify-items: center;
+    }
+
+    .title {
+        font-size: 30px;
+    }
+
+
+    .text {
+        font-size: 20px;
+    }
+
+    .button {
+        background-color: red;
+        font-size: 20px;
+        padding: 5px;
+        background-repeat: 5px;
+    }
+</style>
+</html>

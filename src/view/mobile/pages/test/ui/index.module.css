@@ -1,0 +1,27 @@
+.page {
+    height: 100%;
+    /* width: 100%; */
+    overflow: hidden;
+    /* overflow-x: hidden; */
+    padding: var(--page-padding) var(--page-padding);
+    display: flex;
+    flex-direction: column;
+}
+
+.questionContainer {
+    flex: 1;
+    overflow-y: scroll;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+
+    button {
+        background-color: var(--color-primaryBlockBg);
+    }
+}

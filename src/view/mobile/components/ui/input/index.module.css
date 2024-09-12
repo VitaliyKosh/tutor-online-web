@@ -1,0 +1,6 @@
+.input {
+    overflow: hidden;
+    background-color: var(--color-secondaryBg);
+    padding: 5px 10px;
+    border-radius: var(--blockBorderRadius);
+}

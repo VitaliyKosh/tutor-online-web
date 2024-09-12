@@ -1,0 +1,74 @@
+.text {
+
+}
+
+.text u {
+  text-decoration-color: var(--text-yellow);
+  text-decoration-thickness: 3px;
+}
+
+.text uy {
+  text-decoration-color: var(--text-yellow);
+  text-decoration-thickness: 3px;
+}
+
+.text ug {
+  text-decoration-color: var(--text-green);
+  text-decoration-thickness: 3px;
+}
+
+.text ub {
+  text-decoration-color: var(--text-blue);
+  text-decoration-thickness: 3px;
+}
+
+
+.text mark {
+  background-color: var(--text-yellow);
+}
+
+.text marky {
+  background-color: var(--text-yellow);
+}
+
+.text markg {
+  background-color: var(--text-green);
+}
+
+.text markb {
+  background-color: var(--text-blue);
+}
+
+
+.text colory {
+  color: var(--text-yellow);
+}
+
+.text colorg {
+  color: var(--text-green);
+}
+
+.text colorb {
+  color: var(--text-blue);
+}
+
+/* mi {
+  text-transform: none !important;
+  writing-mode: unset !important;
+  white-space-collapse: preserve !important ;
+  padding-inline-end: 10px;
+  
+  font-style: normal !important;
+  font-family: var(--font-family-text) !important;
+  font-family: "Latin Modern Math";
+} */
+
+/* mi {
+  font-family: var(--font-family-text);
+  text-transform: none;
+} */
+
+.text math {
+  font-weight: 900;
+  font-size: 1.1em;
+}

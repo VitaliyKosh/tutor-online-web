@@ -1,0 +1,19 @@
+.button {
+    overflow: hidden;
+    background-color: var(--color-secondaryBg);
+    padding: 5px 10px;
+    border-radius: var(--blockBorderRadius);
+
+    &:active {
+        animation: highlightAnimation 0.2s ease-in-out forwards;
+    }
+}
+
+@keyframes highlightAnimation {
+    0% {
+        filter:brightness(1)
+    }
+    100% {
+        filter:brightness(1.04)
+    }
+}

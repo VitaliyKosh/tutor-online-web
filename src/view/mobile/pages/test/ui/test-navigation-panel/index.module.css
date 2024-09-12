@@ -1,0 +1,75 @@
+.testNavigationPanel {
+    overflow: scroll;
+    margin: -20px -20px;
+    padding: 10px 20px 20px;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .questions {
+        position: relative;
+        width: max-content;
+        min-width: calc(100vw - 40px);
+
+        .questionButtons {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            z-index: 2;
+
+            .question {
+                width: 40px;
+                min-width: 40px;
+                height: 40px;
+                background-color: var(--color-primaryBlockBg);
+                border-radius: 50%;
+    
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                box-shadow: 2px 2px 7px 0 #00000010 inset;
+
+                transition: 0.3s;
+
+                &.active {
+                    transform: scale(1.2);
+                    filter:saturate(3)
+                }
+
+                &.passed {
+                    background-color: var(--color-Math-yellow);
+                }
+            }
+        }
+
+        .progressBarContainer {
+            z-index: -1;
+
+            position: absolute;
+            left: 20px;
+            width: calc(100% - 40px);
+            top: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+
+            .progressBarBG {
+                position: absolute;
+                height: 5px;
+                width: 100%;
+                background-color: var(--color-tertiaryBlockBg);
+                box-shadow: 0 0 7px 0 #00000050 inset;
+            }
+
+            .progressBar {
+                position: absolute;
+                height: 5px;
+                background-color: var(--color-Math-yellow);
+                transition: 0.3s;
+                box-shadow: 0 0 7px 0 #00000050 inset;
+            }
+        }
+    }
+}

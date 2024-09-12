@@ -1,0 +1,11 @@
+.theory {
+    width: 100%;
+    background-color: var(--color-primaryBlockBg);
+    border-radius:var(--blockBorderRadius);
+    display: flex;
+    align-items: center;
+}
+
+.theoryTitle {
+    padding: 8px 0 8px 20px;
+}

@@ -1,0 +1,42 @@
+.module {
+    width: 100%;
+    background-color: var(--color-primaryBlockBg);
+    border-radius: var(--blockBorderRadius);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.disabled {
+    filter: opacity(0.5);
+}
+
+.moduleTopContainer {
+    min-height: 40px;
+    height: max-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: top;
+    gap: 20px;
+    padding: 0 10px 0 20px;
+}
+
+.moduleNameContainer {
+    padding: 8px 0 10px 0;
+    display: flex;
+    align-items: center;
+    margin-bottom: -4px;
+    flex: 1;
+    overflow: hidden;
+}
+
+.moduleName {
+    width: 100%;
+    overflow: hidden;
+    overflow-wrap: break-word;
+}
+
+.labelContainer {
+    padding-top: 10px;
+}

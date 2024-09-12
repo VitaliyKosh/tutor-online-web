@@ -1,0 +1,52 @@
+.marks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    gap: 5px;
+}
+
+.mark {
+    border-radius: var(--blockBorderRadius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    width: 20px;
+    background-color: #00000020;
+}
+
+.mark1 {
+    background-color: var(--color-Math-negative);
+    opacity: 0.1;
+}
+
+.mark2 {
+    background-color: var(--color-Math-attention);
+    opacity: 0.1;
+}
+
+.mark3 {
+    background-color: var(--color-Math-positive);
+    opacity: 0.1;
+}
+
+.mark1.active {
+    background-color: var(--color-Math-negative);
+    opacity: 1;
+    box-shadow: 0 0 10px 0 #00000010 inset;
+}
+
+.mark2.active {
+    background-color: var(--color-Math-attention);
+    opacity: 1;
+    box-shadow: 0 0 10px 0 #00000010 inset;
+    filter: saturate(1.4)
+}
+
+.mark3.active {
+    background-color: var(--color-Math-positive);
+    opacity: 1;
+    box-shadow: 0 0 10px 0 #00000020 inset;
+    filter: saturate(1.4)
+}

@@ -2,14 +2,137 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, interactive-widget=resizes-content" />
     <link rel="manifest" href="/manifest.webmanifest">
     <script>if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/serviceWorker.js', { scope: '/' })})}</script>
     <title>Репетитор онлайн</title>
   </head>
   <body>
+    <div id="splash">
+      <div class="pageWrapper">
+        <div class="loaderWrapper">
+          <div class="loader">
+            <img class="hedgehog" src="/icons/app-icon.webp"/>
+            <div class="eye"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
+  <script>
+    if (!location.pathname.startsWith('/app')) {
+      document.querySelector('#splash').remove();
+    }
+  </script>
+  <style>
+    #splash {
+      background-color: #FFFFFF;
+      position: fixed;
+      top: 0;
+      height: 100vh;
+      width: 100vw;
+      z-index: 10;
+      transition-property: top;
+      transition-duration: 300ms;
+      transition-delay: 300ms;
+      transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+    }
+  
+    #splash.animate {
+      top: -100vh;
+    }
+
+    .pageWrapper {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .loaderWrapper {
+      width: 62.5vmin;
+      height: 62.5vmin;
+    }
+    
+    .loader {
+      position: relative;
+    }
+
+    .hedgehog {
+      width: 100%;
+    }
+
+    .eye {
+      height: 5.6%;
+      width: 6.2%;
+      background-color: rgb(253, 246, 209);
+
+      position: absolute;
+      border-radius: 50%;
+      top: 35.1%;
+      left: 30%;
+      transform: rotateX(90deg);
+      animation: eyeAnimation 10s infinite;
+    }
+
+    @keyframes eyeAnimation {
+      4% {
+        transform: rotateX(90deg);
+        top: 32.5%;
+      }
+      6% {
+        transform: rotate(0deg);
+        top: 35.1%;
+      }
+      8% {
+        transform: rotateX(90deg);
+        top: 32.5%;
+      }
+      34% {
+        transform: rotateX(90deg);
+        top: 32.5%;
+      }
+      36% {
+        transform: rotate(0deg);
+        top: 35.1%;
+      }
+      38% {
+        transform: rotateX(90deg);
+        top: 32.5%;
+      }
+      50% {
+        transform: rotateX(90deg);
+        top: 32.5%;
+      }
+      52% {
+        transform: rotate(0deg);
+        top: 35.1%;
+      }
+      54% {
+        transform: rotateX(90deg);
+        top: 32.5%;
+      }
+      84% {
+        transform: rotateX(90deg);
+        top: 32.5%;
+      }
+      86% {
+        transform: rotate(0deg);
+        top: 35.1%;
+      }
+      88% {
+        transform: rotateX(90deg);
+        top: 32.5%;
+      }
+      100% {
+        transform: rotateX(90deg);
+        top: 32.5%;
+      }
+    }
+
+  </style>
 </html>

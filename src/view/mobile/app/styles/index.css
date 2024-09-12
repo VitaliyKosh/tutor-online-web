@@ -1,0 +1,36 @@
+@import "reset";
+@import "variables/global";
+@import "native-like-experience";
+@import "fonts.css";
+
+html {
+    /* overscroll-behavior-y: none;
+    overscroll-behavior-x: none; */
+    height: 100lvh;
+    width: 100vw;
+    position: fixed;
+    overflow: hidden;
+    /* background-color: aqua; */
+} 
+
+body {
+    height: 100%;
+    width: 100%;
+    overscroll-behavior-x: none;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+
+.app {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.content-page {
+    display: flex;
+}
