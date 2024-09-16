@@ -1,7 +1,14 @@
 import { TestApiService } from '@/core/services/test-api/types';
 import { TestStateService } from '@/core/services/test-state/types';
+import { mo } from '@/shared/helpers/map-object';
 import { Dependencies, Module } from '@/view/mobile/shared/lib/clear';
-import { UserAnswer } from 'tutor-online-global-shared';
+import {
+    ChoosingSeveralUserAnswers,
+    ChoosingUserAnswers,
+    CorelationUserAnswers,
+    FreeAnswerUserAnswers,
+    UserAnswer,
+} from 'tutor-online-global-shared';
 
 export interface TestTestDeps extends Dependencies {
     testStateService: TestStateService;
@@ -10,13 +17,25 @@ export interface TestTestDeps extends Dependencies {
 
 export class TestModule extends Module<TestTestDeps> {
     async loadTest(testId: string) {
-        const test = await this.$deps.testApiService.loadTest({ testId });
+        const testData = await this.$deps.testApiService.loadTest({ testId });
 
-        this.$deps.testStateService.setTest(test);
-        this.$deps.testStateService.setAnswers({});
+        this.$deps.testStateService.setTest(testData.test);
+        this.$deps.testStateService.setAnswers(testData.userAnswers ? testData.userAnswers : {});
         this.$deps.testStateService.setQuestionIndex(0);
+        this.$deps.testStateService.setIsResolved(testData.isResolved ?? false);
+        this.$deps.testStateService.setMark(testData.mark);
 
-        return test;
+        if (testData.userAnswers) {
+            const results = mo(testData.userAnswers).map(([, v]) => v.right);
+
+            this.$deps.testStateService.setTestResults(results);
+        }
+
+        if (testData.mark) {
+            this.$deps.testStateService.setMark(testData.mark);
+        }
+
+        return testData.test;
     }
 
     async loadUserActiveTests() {
@@ -36,7 +55,14 @@ export class TestModule extends Module<TestTestDeps> {
         return this.$deps.testStateService.useTest();
     }
 
-    setAnswer(answerId: string, answer: UserAnswer) {
+    setAnswer(
+        answerId: string,
+        answer:
+            | ChoosingUserAnswers
+            | ChoosingSeveralUserAnswers
+            | FreeAnswerUserAnswers
+            | CorelationUserAnswers,
+    ) {
         this.$deps.testStateService.setAnswer(answerId, answer);
     }
 
@@ -96,5 +122,40 @@ export class TestModule extends Module<TestTestDeps> {
 
     useResolvedTests() {
         return this.$deps.testStateService.useResolvedTests();
+    }
+
+    getTestResults() {
+        return this.$deps.testStateService.getTestResults();
+    }
+
+    useTestResults() {
+        return this.$deps.testStateService.useTestResults();
+    }
+
+    getMark() {
+        return this.$deps.testStateService.getMark();
+    }
+
+    useMark() {
+        return this.$deps.testStateService.useMark();
+    }
+
+    getIsResolved() {
+        return this.$deps.testStateService.getIsResolved();
+    }
+
+    useIsResolved() {
+        return this.$deps.testStateService.useIsResolved();
+    }
+
+    async completeTest(testId: string, answers: UserAnswer) {
+        const { results, mark } = await this.$deps.testApiService.completeTest(testId, answers);
+
+        console.log(results, mark);
+
+        this.$deps.testStateService.setTestResults(results);
+        this.$deps.testStateService.setMark(mark);
+
+        return { results, mark };
     }
 }

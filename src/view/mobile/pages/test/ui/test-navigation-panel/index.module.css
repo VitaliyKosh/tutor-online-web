@@ -41,6 +41,14 @@
                 &.passed {
                     background-color: var(--color-Math-yellow);
                 }
+
+                &.right{
+                    background-color: var(--color-Math-positive);
+                }
+
+                &.wrong {
+                    background-color: var(--color-Math-negative);
+                }
             }
         }
 

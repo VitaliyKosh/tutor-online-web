@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { UserAuthStatus } from '@/core/repositories/user-state/types';
-import { UserService } from '@/core/services/user-state/types';
+import { UserStateService } from '@/core/services/user-state/types';
 import PushService from '@/view/mobile/shared/api-services/push-service';
 import { Dependencies, Module } from '@/view/mobile/shared/lib/clear';
 import { useEffect } from 'react';
 
 export interface PushModuleDeps extends Dependencies {
-    userService: UserService;
+    userService: UserStateService;
 }
 
 export class PushModule extends Module<PushModuleDeps> {

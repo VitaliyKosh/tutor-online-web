@@ -9,6 +9,7 @@ import { useTimer } from '@/view/mobile/shared/hooks/use-timer';
 import { Label } from '../label';
 import classNames from 'classnames';
 import { Mark } from './mark';
+import { getMark } from '@/view/mobile/shared/lib/mark/get-mark';
 
 type Props = {
     test: SubTest;
@@ -46,7 +47,7 @@ export const TestButton: FC<Props> = ({ test }) => {
                     text={'Просрочен'}
                 />
             )}
-            {test.mark && <Mark mark={test.mark} />}
+            {test.mark !== undefined && <Mark mark={getMark(test.mark)} />}
         </Link>
     );
 };

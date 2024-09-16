@@ -1,25 +1,39 @@
 import { BasicSkeleton } from '@/view/mobile/components/ui/basic-skeleton';
 import s from './index.module.css';
-import { ModuleListSkeleton } from '@/view/mobile/components/ui/module-list/skeleton';
-import { PC } from '@/view/mobile/shared/types/page';
-import { useLocation } from 'react-router-dom';
-import { ModuleDto } from 'tutor-online-global-shared/dist/types/dto/module/shared';
-import { ModuleLabel } from '@/view/mobile/components/ui/module-label';
+import { Gap } from '@/view/mobile/components/ui/gap';
 
-export const TestPageFallback: PC = ({ useHeaderTitle, useHeaderAddon }) => {
-    const location = useLocation();
-
-    const state: { module: ModuleDto } = location.state;
-
-    const hasState = Boolean(state);
-
-    useHeaderTitle(hasState ? state.module.name : undefined);
-    useHeaderAddon(hasState ? <ModuleLabel status={state.module.status} size='m' /> : undefined);
-
+export const TestPageFallback = () => {
     return (
         <div className={s.page}>
-            <BasicSkeleton className={s.modulesTitle} />
-            <ModuleListSkeleton skeletonCount={3} />
+            <div className={s.testNavigation}>
+                <div className={s.questionButtons}>
+                    <BasicSkeleton className={s.question} />
+                    <BasicSkeleton className={s.question} />
+                    <BasicSkeleton className={s.question} />
+                    <BasicSkeleton className={s.question} />
+                    <BasicSkeleton className={s.question} />
+                </div>
+
+                <Gap size={'m'} />
+
+                <div className={s.contentContainer}>
+                    <BasicSkeleton className={s.content} />
+                    <BasicSkeleton className={s.content} />
+                    <BasicSkeleton className={s.contentShort} />
+                </div>
+            </div>
+            <div className={s.bottomBlock}>
+                <div className={s.answers}>
+                    <BasicSkeleton className={s.answer} />
+                    <BasicSkeleton className={s.answer} />
+                    <BasicSkeleton className={s.answer} />
+                    <BasicSkeleton className={s.answer} />
+                </div>
+                <div className={s.navButtons}>
+                    <BasicSkeleton className={s.prevButton} />
+                    <BasicSkeleton className={s.nextButton} />
+                </div>
+            </div>
         </div>
     );
 };

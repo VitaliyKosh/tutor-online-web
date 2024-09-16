@@ -1,6 +1,13 @@
 import { StateService } from '@/view/mobile/shared/lib/clear/services/state';
 import { TestStateService as ITestStateService } from './types';
-import { SubTest, TestDto, UserAnswer } from 'tutor-online-global-shared';
+import {
+    ChoosingSeveralUserAnswers,
+    ChoosingUserAnswers,
+    CorelationUserAnswers,
+    FreeAnswerUserAnswers,
+    SubTest,
+    TestDto,
+} from 'tutor-online-global-shared';
 import { TestStateRepository } from '@/core/repositories/test-state/repository';
 import { TestState, UserAnswers } from '@/core/repositories/test-state/types';
 
@@ -23,7 +30,14 @@ export class TestStateService
         return this.useObservableValue((s) => s.test) ?? null;
     }
 
-    setAnswer(answerId: string, answer: UserAnswer) {
+    setAnswer(
+        answerId: string,
+        answer:
+            | ChoosingUserAnswers
+            | ChoosingSeveralUserAnswers
+            | FreeAnswerUserAnswers
+            | CorelationUserAnswers,
+    ) {
         this.$repository.setState((s) => ({
             ...s,
             answers: {
@@ -63,6 +77,36 @@ export class TestStateService
         return this.useObservableValue((s) => s.activeQuestionIndex);
     }
 
+    setTestResults(results: Record<string, boolean | undefined>) {
+        this.$repository.setState((s) => ({
+            ...s,
+            testResults: results,
+        }));
+    }
+
+    getTestResults() {
+        return this.$repository.state.testResults;
+    }
+
+    useTestResults() {
+        return this.useObservableValue((s) => s.testResults);
+    }
+
+    setMark(mark: number | undefined) {
+        this.$repository.setState((s) => ({
+            ...s,
+            mark,
+        }));
+    }
+
+    getMark() {
+        return this.$repository.state.mark;
+    }
+
+    useMark() {
+        return this.useObservableValue((s) => s.mark);
+    }
+
     setActiveTests(tests: SubTest[]) {
         this.$repository.setState((s) => ({
             ...s,
@@ -91,5 +135,20 @@ export class TestStateService
 
     useResolvedTests() {
         return this.useObservableValue((s) => s.resolvedTests);
+    }
+
+    setIsResolved(isResolved: boolean) {
+        this.$repository.setState((s) => ({
+            ...s,
+            isResolved,
+        }));
+    }
+
+    getIsResolved() {
+        return this.$repository.state.isResolved;
+    }
+
+    useIsResolved() {
+        return this.useObservableValue((s) => s.isResolved);
     }
 }

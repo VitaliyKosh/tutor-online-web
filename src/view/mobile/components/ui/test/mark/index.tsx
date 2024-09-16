@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import s from './index.module.css';
 import classNames from 'classnames';
-import { UserTestMark } from 'tutor-online-global-shared';
+import { ViewMark } from '@/view/mobile/shared/lib/mark/types';
 
 type Props = {
     className?: string;
-    mark: UserTestMark;
+    mark: ViewMark;
 };
 
 export const Mark: FC<Props> = ({ className, mark }) => {
