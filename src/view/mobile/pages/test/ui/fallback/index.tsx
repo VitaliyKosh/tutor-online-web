@@ -1,6 +1,14 @@
 import { BasicSkeleton } from '@/view/mobile/components/ui/basic-skeleton';
 import s from './index.module.css';
 import { Gap } from '@/view/mobile/components/ui/gap';
+import { PC } from '@/view/mobile/shared/types/page';
+import { usePageTitle } from '@/view/mobile/shared/hooks/use-page-title';
+
+export const TestPageFallbackGlobal: PC = ({ useHeaderTitle }) => {
+    usePageTitle(useHeaderTitle);
+
+    return <TestPageFallback />;
+};
 
 export const TestPageFallback = () => {
     return (

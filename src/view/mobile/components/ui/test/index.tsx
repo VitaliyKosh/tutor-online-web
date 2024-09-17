@@ -29,6 +29,9 @@ export const TestButton: FC<Props> = ({ test }) => {
             to={paths.getRoutePath(RouteNames.TEST, {
                 params: { id: test.id },
             })}
+            state={{
+                pageTitle: test.name,
+            }}
         >
             <Text className={s.testTitle} textSize={'xl'} textColor='yellow'>
                 {test.name}

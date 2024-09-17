@@ -1,6 +1,6 @@
 import { PC } from '@/view/mobile/shared/types/page';
 import s from './index.module.css';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useCallback, useState } from 'react';
 import { TestNavigationPanel } from './test-navigation-panel';
 import { Gap } from '@/view/mobile/components/ui/gap';
@@ -14,6 +14,7 @@ import { TestPageFallback } from './fallback';
 
 const TestPage: PC = ({ useHeaderTitle, isStandaloneIphoneX }) => {
     const { id } = useParams();
+    const location = useLocation();
 
     const test = appTest.useTest();
     const answers = appTest.useAnswers();
@@ -22,7 +23,7 @@ const TestPage: PC = ({ useHeaderTitle, isStandaloneIphoneX }) => {
     const mark = appTest.useMark();
     const isResolved = appTest.useIsResolved();
 
-    const setTitle = useHeaderTitle('Тест');
+    const setTitle = useHeaderTitle(location.state.pageTitle);
     const [showResults, setShowResults] = useState(false);
 
     const activeQuestionId = test?.questions[activeQuestionIndex].id;
@@ -32,6 +33,8 @@ const TestPage: PC = ({ useHeaderTitle, isStandaloneIphoneX }) => {
     const loadTest = useCallback(async () => {
         if (id) {
             const test = await appTest.loadTest(id);
+
+            console.log(11, test.name);
 
             if (test.name) {
                 setTitle(test.name);
@@ -46,7 +49,9 @@ const TestPage: PC = ({ useHeaderTitle, isStandaloneIphoneX }) => {
     const handleNextButtonClick = async () => {
         if (isActiveQuestionIndexLast) {
             if (id) {
-                await appTest.completeTest(id, answers);
+                if (!isResolved) {
+                    await appTest.completeTest(id, answers);
+                }
 
                 setShowResults(true);
             }
@@ -63,7 +68,7 @@ const TestPage: PC = ({ useHeaderTitle, isStandaloneIphoneX }) => {
         return;
     }
 
-    const nextButtonText = isActiveQuestionIndexLast ? 'Завершить' : 'Далее';
+    const nextButtonText = isActiveQuestionIndexLast ? isResolved ? 'Результаты' : 'Завершить' : 'Далее';
 
     if (showResults) {
         return (
