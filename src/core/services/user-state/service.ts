@@ -1,6 +1,6 @@
 import { UserStateRepository } from '@/core/repositories/user-state/repository';
 import { UserAuthStatus, UserState, User } from '@/core/repositories/user-state/types';
-import { StateService } from '@/view/mobile/shared/lib/clear/services/state';
+import { StateService } from '@/shared/clear/services/state';
 import { UserStateService as IUserStateService } from './types';
 
 export class UserStateService

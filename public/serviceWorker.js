@@ -25,12 +25,12 @@ self.addEventListener('fetch', function(event) {
 self.addEventListener('activate', () => self.clients.claim());
 
 self.addEventListener('push', function (e) {
-    if (!(
-        self.Notification &&
-        self.Notification.permission === 'granted'
-    )) {
-        return;
-    }
+    // if (!(
+    //     self.Notification &&
+    //     self.Notification.permission === 'granted'
+    // )) {
+    //     return;
+    // }
 
     if (e.data) {
         let message = e.data.json();

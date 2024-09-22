@@ -1,5 +1,5 @@
 import { UserStateService } from '@/core/services/user-state/types';
-import { Dependencies, Module } from '@/view/mobile/shared/lib/clear';
+import { Dependencies, Module } from '@/shared/clear';
 
 export interface UserModuleDeps extends Dependencies {
     userService: UserStateService;

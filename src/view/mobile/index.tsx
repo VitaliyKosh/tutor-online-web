@@ -6,7 +6,7 @@ import { createRoot } from 'react-dom/client';
 app.initGlobalApp();
 
 createRoot(document.getElementById('root')!).render(
-    <React.StrictMode>
+    // <React.StrictMode>
         <AppComponent />
-    </React.StrictMode>,
+    // </React.StrictMode>,
 );

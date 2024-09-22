@@ -1,4 +1,4 @@
-import { StateService } from '@/view/mobile/shared/lib/clear/services/state';
+import { StateService } from '@/shared/clear/services/state';
 import { ModulesStateService as IModulesStateService } from './types';
 import { Module, ModulesState } from '@/core/repositories/modules-state/types';
 import { ModulesStateRepository } from '@/core/repositories/modules-state/repository';

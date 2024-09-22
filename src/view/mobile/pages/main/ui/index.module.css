@@ -8,7 +8,6 @@
 }
 
 .tests {
-    background-color: red;
     padding: 20px;
     border-radius: var(--blockBorderRadius);
     background-color: var(--color-tertiaryBg);

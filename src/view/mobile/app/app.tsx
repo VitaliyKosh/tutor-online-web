@@ -9,16 +9,17 @@ import { useAuth } from './hooks/use-auth';
 import { usePush } from './hooks/use-push';
 
 info.initInfoBlock();
+info.showInfoBlock();
 
 const App: FC = () => {
-    useAuth();
     usePush();
+    useAuth();
 
     return (
         <ErrorBoundary>
             <KeyboardLayout>
                 <GlobalLoader>
-                    <RouterProvider />
+                        <RouterProvider />
                 </GlobalLoader>
             </KeyboardLayout>
         </ErrorBoundary>

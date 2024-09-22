@@ -1,8 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import { user } from '@/core/app';
 import { UserAuthStatus } from '@/core/repositories/user-state/types';
 import { UserStateService } from '@/core/services/user-state/types';
 import PushService from '@/view/mobile/shared/api-services/push-service';
-import { Dependencies, Module } from '@/view/mobile/shared/lib/clear';
+import { Dependencies, Module } from '@/shared/clear';
+import { info } from '@/view/mobile/shared/lib/info';
 import { useEffect } from 'react';
 
 export interface PushModuleDeps extends Dependencies {
@@ -17,41 +19,61 @@ export class PushModule extends Module<PushModuleDeps> {
         ExistingSubscription: 'ExistingSubscription',
         Unknown: 'Unknown',
     };
-
     private PUBLIC_KEY =
         'BLpOhkXw2ZdEAAc16w-oJV3E4QoztmsKl-awkf6-bA4DYcjgXDBU2zLPE8lMqcw6P2ihgmovm-cpGW8uBirzKqg';
-
     private subscribed = false;
 
     usePush() {
-        const authStatus = this.$deps.userService.useUserAuthStatus();
+        const authStatus = user.useUserAuthStatus();
+
+        info.log('usePush');
 
         useEffect(() => {
+            info.log('authStatus', authStatus);
+
             const onUserAction = async () => {
+                info.log('onUserAction', this.subscribed, 'authStatus', authStatus);
+
                 if (this.subscribed) {
+                    clearListener();
                     return;
                 }
 
-                this.subscribe();
+                if (authStatus === UserAuthStatus.SIGN_IN) {
+                    await this.subscribe();
+                    clearListener();
+                }
             };
 
             const clearListener = () => {
+                info.log('clearListener');
                 document.removeEventListener('click', onUserAction);
             };
 
-            if (authStatus === UserAuthStatus.SIGN_IN) {
-                document.addEventListener('click', onUserAction);
-                this.subscribe();
-            } else {
+            document.addEventListener('click', onUserAction);
+
+            return () => {
                 clearListener();
-            }
+            };
         }, [authStatus]);
+
+        useEffect(() => {
+            info.log('mount');
+
+            return () => {
+                info.log('unmount');
+            };
+        }, []);
     }
 
     async subscribe() {
+        info.log('subscribe');
+
         try {
             const subscription = await this.getSubscription();
             const deviceId = subscription.endpoint;
+
+            info.log('subscribe data:', String(subscription), deviceId);
 
             await PushService.subscribe({
                 subscription: subscription,
@@ -60,6 +82,7 @@ export class PushModule extends Module<PushModuleDeps> {
 
             this.subscribed = true;
         } catch (e) {
+            info.log('subscribe warn', String(e));
             console.warn(e);
         }
     }
@@ -105,5 +128,20 @@ export class PushModule extends Module<PushModuleDeps> {
         }
 
         return outputArray;
+    }
+
+    async askPermission() {
+        const permissionResult_1 = await new Promise(function (resolve, reject) {
+            const permissionResult = Notification.requestPermission(function (result) {
+                resolve(result);
+            });
+
+            if (permissionResult) {
+                permissionResult.then(resolve, reject);
+            }
+        });
+        if (permissionResult_1 !== 'granted') {
+            throw new Error("We weren't granted permission.");
+        }
     }
 }

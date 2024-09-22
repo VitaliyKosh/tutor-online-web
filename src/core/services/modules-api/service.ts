@@ -1,6 +1,6 @@
 import { ApiRepository } from '@/core/repositories/api/repository';
 import { ModulesApiService as IModulesApiService } from './types';
-import { Service } from '@/view/mobile/shared/lib/clear';
+import { Service } from '@/shared/clear';
 import { GetModuleResBody, GetRootModulesResBody } from 'tutor-online-global-shared';
 
 export class ModulesApiService extends Service<ApiRepository> implements IModulesApiService {

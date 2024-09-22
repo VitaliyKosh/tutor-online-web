@@ -1,7 +1,7 @@
 import { TestApiService } from '@/core/services/test-api/types';
 import { TestStateService } from '@/core/services/test-state/types';
 import { mo } from '@/shared/helpers/map-object';
-import { Dependencies, Module } from '@/view/mobile/shared/lib/clear';
+import { Dependencies, Module } from '@/shared/clear';
 import {
     ChoosingSeveralUserAnswers,
     ChoosingUserAnswers,

@@ -1,6 +1,6 @@
 import { ApiRepository } from '@/core/repositories/api/repository';
 import { AuthApiService as IAuthApiService } from './types';
-import { Service } from '@/view/mobile/shared/lib/clear';
+import { Service } from '@/shared/clear';
 import { SignInRes, VerifyTokenRes } from 'tutor-online-global-shared';
 
 export class AuthApiService extends Service<ApiRepository> implements IAuthApiService {

@@ -1,6 +1,6 @@
 import { TestStateRepository } from '@/core/repositories/test-state/repository';
 import { TestState, UserAnswers } from '@/core/repositories/test-state/types';
-import { StateService } from '@/view/mobile/shared/lib/clear/services/state';
+import { StateService } from '@/shared/clear/services/state';
 import {
     ChoosingSeveralUserAnswers,
     ChoosingUserAnswers,

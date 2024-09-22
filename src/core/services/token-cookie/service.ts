@@ -1,4 +1,4 @@
-import { Service } from '@/view/mobile/shared/lib/clear';
+import { Service } from '@/shared/clear';
 import { CookieRepository } from '@/core/repositories/cookie/repository';
 import { CookieNames } from '@/core/repositories/cookie/types';
 import { AuthTokenService } from './types';

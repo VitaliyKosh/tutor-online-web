@@ -2,7 +2,7 @@ import { UserAuthStatus } from '@/core/repositories/user-state/types';
 import { AuthApiService } from '@/core/services/auth-api/types';
 import { AuthTokenService } from '@/core/services/token-cookie/types';
 import { UserStateService } from '@/core/services/user-state/types';
-import { Dependencies, Module } from '@/view/mobile/shared/lib/clear';
+import { Dependencies, Module } from '@/shared/clear';
 
 export interface AuthModuleDeps extends Dependencies {
     userService: UserStateService;
@@ -44,8 +44,6 @@ export class AuthModule extends Module<AuthModuleDeps> {
             this.$deps.userService.setUserAuthStatus(UserAuthStatus.SIGN_OUT);
             return false;
         }
-
-        console.log(999);
 
         return true;
     }

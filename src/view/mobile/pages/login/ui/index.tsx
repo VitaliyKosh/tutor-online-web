@@ -1,7 +1,6 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import s from './index.module.css';
 import classNames from 'classnames';
-import AuthService from '@/view/mobile/shared/api-services/auth-service';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { paths } from '@/view/mobile/shared/lib/path';
 import { RouteNames } from '@/view/mobile/shared/consts/paths';
@@ -10,7 +9,7 @@ import { Gap } from '@/view/mobile/components/ui/gap';
 import { Text } from '@/view/mobile/components/ui/text';
 import Button from '@/view/mobile/components/ui/button';
 import { ApiError } from '@/view/mobile/shared/types/api';
-import { auth, user } from '@/core/app';
+import { auth, push, user } from '@/core/app';
 import { UserAuthStatus } from '@/core/repositories/user-state/types';
 
 interface LoginPageProps {
@@ -43,6 +42,10 @@ const LoginPage: FC<LoginPageProps> = () => {
             setError(axiosError.response?.data?.message ?? 'Ошибка сервера');
         }
     };
+
+    useEffect(() => {
+        push.askPermission();
+    }, []);
 
     if (authStatus === UserAuthStatus.SIGN_IN) {
         return <Navigate to={paths.getRoutePath(RouteNames.MAIN)} replace={true} />;

@@ -34,8 +34,6 @@ const TestPage: PC = ({ useHeaderTitle, isStandaloneIphoneX }) => {
         if (id) {
             const test = await appTest.loadTest(id);
 
-            console.log(11, test.name);
-
             if (test.name) {
                 setTitle(test.name);
             }

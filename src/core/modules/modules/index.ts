@@ -1,6 +1,6 @@
 import { ModulesApiService } from '@/core/services/modules-api/types';
 import { ModulesStateService } from '@/core/services/modules-state/types';
-import { Dependencies, Module } from '@/view/mobile/shared/lib/clear';
+import { Dependencies, Module } from '@/shared/clear';
 
 export interface ModulesModuleDeps extends Dependencies {
     modulesStateService: ModulesStateService;

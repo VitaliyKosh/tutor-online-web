@@ -1,4 +1,4 @@
-import { Application } from '@/view/mobile/shared/lib/clear';
+import { Application } from '@/shared/clear';
 import { UserModule } from '../modules/user';
 import { userStateService } from '../services/user-state';
 import { AuthModule } from '../modules/auth';
@@ -28,6 +28,8 @@ import { cookieRepository } from '../repositories/cookie';
 import { modulesStateRepository } from '../repositories/modules-state';
 import { testStateRepository } from '../repositories/test-state';
 import { userStateRepository } from '../repositories/user-state';
+import { SettingsModule } from '../modules/settings';
+import { settingsLocalStorageService } from '../services/settings-local-storage';
 
 export interface ApplicationModules {
     user: UserModule;
@@ -35,6 +37,7 @@ export interface ApplicationModules {
     push: PushModule;
     modules: ModulesModule;
     test: TestModule;
+    settings: SettingsModule;
 }
 
 export interface ApplicationServices {
@@ -104,6 +107,11 @@ export const app = new Application<
             deps: {
                 testStateService,
                 testApiService,
+            },
+        }),
+        settings: new SettingsModule({
+            deps: {
+                settingsStateService: settingsLocalStorageService,
             },
         }),
     },

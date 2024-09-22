@@ -2,7 +2,7 @@ import { ApiRepository } from './repository';
 
 import axios, { AxiosResponse } from 'axios';
 import { auth } from '@/core/app';
-import { ResponseInterceptorOptions } from '@/view/mobile/shared/lib/clear/repositories/api/api-repository';
+import { ResponseInterceptorOptions } from '@/shared/clear/repositories/api/api-repository';
 import { CookieNames } from '../cookie/types';
 
 export const API_URL = import.meta.env.VITE_API_URL;

@@ -52,7 +52,7 @@ const log = (...data: (string | number | boolean | null | undefined | object)[])
 
     addLogLine(stringContent);
 
-    console.log(data);
+    console.log(...data);
 };
 
 const logValue = (

@@ -1,4 +1,4 @@
-import { StateService } from '@/view/mobile/shared/lib/clear/services/state';
+import { StateService } from '@/shared/clear/services/state';
 import { TestStateService as ITestStateService } from './types';
 import {
     ChoosingSeveralUserAnswers,

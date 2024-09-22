@@ -1,6 +1,6 @@
 import { ApiRepository } from '@/core/repositories/api/repository';
 import { TestApiService as ITestApiService } from './types';
-import { Service } from '@/view/mobile/shared/lib/clear';
+import { Service } from '@/shared/clear';
 import {
     CompleteTestResBody,
     GetTestResBody,
