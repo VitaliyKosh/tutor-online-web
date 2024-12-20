@@ -15,6 +15,7 @@ export enum RouteNames {
     MODULE = 'MODULE',
     SDUI = 'SDUI',
     TEST = 'TEST',
+    SETTINGS = 'SETTINGS',
 }
 
 export const routePaths: Record<RouteNames | GlobalRouteNames, string> = {
@@ -32,4 +33,5 @@ export const routePaths: Record<RouteNames | GlobalRouteNames, string> = {
     [RouteNames.MODULE]: '/app/module/:id',
     [RouteNames.SDUI]: '/app/sdui/:id',
     [RouteNames.TEST]: '/app/test/:id',
+    [RouteNames.SETTINGS]: '/app/settings',
 };

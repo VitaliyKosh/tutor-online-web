@@ -1,0 +1,9 @@
+.buttonsList {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    gap: 1px;
+    background-color: var(--color-onPrimaryBlock);
+    border-radius: var(--blockBorderRadius);
+}

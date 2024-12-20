@@ -12,6 +12,7 @@ import { progressPageLayoutProps } from './pages/progress';
 import { sduiPageLayoutProps } from './pages/sdui';
 import { testsPageLayoutProps } from './pages/tests';
 import { testPageLayoutProps } from './pages/test';
+import { settingsPageLayoutProps } from './pages/settings';
 
 export const pagesProps: Record<RouteNames, ScreenLayoutProps> = {
     [RouteNames.MAIN]: mainPageLayoutProps,
@@ -26,4 +27,5 @@ export const pagesProps: Record<RouteNames, ScreenLayoutProps> = {
     [RouteNames.MODULE]: modulePageLayoutProps,
     [RouteNames.SDUI]: sduiPageLayoutProps,
     [RouteNames.TEST]: testPageLayoutProps,
+    [RouteNames.SETTINGS]: settingsPageLayoutProps,
 };
