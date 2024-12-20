@@ -1,7 +1,7 @@
 import { User } from '@/core/repositories/user-state/types';
 
-export interface AuthService {
+export interface AuthApiService {
     signIn: (options: { login: string; password: string }) => Promise<User>;
     signOut: () => Promise<void>;
-    checkAuth: () => Promise<User>;
+    checkAuth: (options?: { isRetry?: boolean }) => Promise<User>;
 }

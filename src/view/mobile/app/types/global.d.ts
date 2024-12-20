@@ -8,7 +8,7 @@ declare module '*.svg' {
     export default SVG;
 }
 
-import { Application } from '@/view/mobile/shared/lib/clear';
+import { Application } from '@/shared/clear';
 
 interface ApplicationModules {
     counter: CounterModule;

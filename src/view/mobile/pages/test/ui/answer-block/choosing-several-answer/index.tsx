@@ -13,10 +13,20 @@ type Props = {
     setAnswer: (answer: UserOmitAnswer) => void;
     answers: Omit<ChoosingSeveralAnswers, 'rightAnswer'>;
     userAnswer: ChoosingSeveralUserAnswers | undefined;
+    isResolved: boolean;
 };
 
-export const ChoosingSeveralAnswer: FC<Props> = ({ setAnswer, answers, userAnswer }) => {
+export const ChoosingSeveralAnswer: FC<Props> = ({
+    setAnswer,
+    answers,
+    userAnswer,
+    isResolved,
+}) => {
     const handleAnswerSelected = (index: number) => {
+        if (isResolved) {
+            return;
+        }
+
         const newUserAnswer = userAnswer?.userAnswer?.includes(index)
             ? userAnswer?.userAnswer.filter((a) => a !== index)
             : [...(userAnswer?.userAnswer ?? []), index];

@@ -9,8 +9,9 @@
 }
 
 .questionContainer {
+    padding-top: 20px;
     flex: 1;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .buttons {

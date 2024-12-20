@@ -4,8 +4,10 @@ import { TestList } from '@/view/mobile/components/ui/test-list';
 import s from './index.module.css';
 import { Gap } from '@/view/mobile/components/ui/gap';
 import { PullToRefreshContainer } from '@/view/mobile/components/layout/pull-to-refresh-container';
-import { test } from '@/core/app';
+import { auth, test } from '@/core/app';
 import { useLoader } from '@/view/mobile/shared/hooks/use-loader';
+import Button from '@/view/mobile/components/ui/button';
+import { info } from '@/view/mobile/shared/lib/info';
 
 const loadUserActiveTests = () => test.loadUserActiveTests();
 
@@ -39,6 +41,37 @@ const MainPage: PC = () => {
                     <Gap size={'m'} />
                     <TestList tests={resolvedTests} skeletonCount={2} testsLoading={isLoading} />
                 </div>
+                <Button onClick={() => auth.signOut()} textSize={'s'}>
+                    signOut
+                </Button>
+                <Button
+                    onClick={() => {
+                        info.log('Notification in window', 'Notification' in window);
+
+                        if ('Notification' in window) {
+                            Notification.requestPermission()
+                                .then((permission) => {
+                                    if (permission === 'granted') {
+                                        info.log('Разрешение на уведомления получено.');
+                                        // Здесь можно зарегистрировать Service Worker
+                                    } else {
+                                        info.log('Разрешение на уведомления не получено.');
+                                    }
+                                })
+                                .catch((error) => {
+                                    info.log(
+                                        'Ошибка при запросе разрешения на уведомления:',
+                                        error,
+                                    );
+                                });
+                        } else {
+                            info.log('Ваш браузер не поддерживает уведомления.');
+                        }
+                    }}
+                    textSize={'s'}
+                >
+                    Notification
+                </Button>
             </div>
         </PullToRefreshContainer>
     );

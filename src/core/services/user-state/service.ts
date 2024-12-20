@@ -1,11 +1,11 @@
 import { UserStateRepository } from '@/core/repositories/user-state/repository';
 import { UserAuthStatus, UserState, User } from '@/core/repositories/user-state/types';
-import { StateService } from '@/view/mobile/shared/lib/clear/services/state';
-import { UserService } from './types';
+import { StateService } from '@/shared/clear/services/state';
+import { UserStateService as IUserStateService } from './types';
 
 export class UserStateService
     extends StateService<UserState, UserStateRepository>
-    implements UserService
+    implements IUserStateService
 {
     setUser(user: User | null) {
         this.$repository.setState({

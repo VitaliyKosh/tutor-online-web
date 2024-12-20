@@ -1,0 +1,19 @@
+.avatar {
+    background-color: var(--color-primaryBlockBg);
+    aspect-ratio: 1;
+    /* height: 100%; */
+
+    border-radius: 50%;
+
+    width: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fallbackIcon {
+    width: 50%;
+    height: 50%;
+    color: var(--text-primary);
+}

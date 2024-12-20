@@ -25,13 +25,6 @@ self.addEventListener('fetch', function(event) {
 self.addEventListener('activate', () => self.clients.claim());
 
 self.addEventListener('push', function (e) {
-    if (!(
-        self.Notification &&
-        self.Notification.permission === 'granted'
-    )) {
-        return;
-    }
-
     if (e.data) {
         let message = e.data.json();
 
@@ -42,6 +35,46 @@ self.addEventListener('push', function (e) {
 });
 
 self.addEventListener('notificationclick', function(event) {
-    event.notification.close();
-    clients.openWindow(event.notification.data.action);
+    // clients.openWindow(event.notification.data.action);
+
+    event.waitUntil(clients.matchAll({
+        type: "window"
+    }).then(function (clientList) {
+        let client = null;
+        let isIphone = false;
+
+        for (let i = 0; i < clientList.length; i++) {
+            let item = clientList[i];
+
+            const userAgent = item.userAgent || '';
+
+            if (/iPhone/.test(userAgent)) {
+                isIphone = true;
+                break;
+            }
+
+            if (item.url) {
+                client = item;
+                break;
+            }
+        }
+
+        if (isIphone) {
+            event.waitUntil(self.registration.showNotification(`isIphone: ${isIphone}`));
+            event.notification.close();
+            clients.openWindow(event.notification.data.action);
+        }
+
+        if (client && 'navigate' in client) {
+            event.waitUntil(self.registration.showNotification(`navigate: ${'navigate' in client}, ${isIphone}`));
+            client.focus();
+            event.notification.close();
+            // client.navigate('/app');
+            return 
+        } else {
+            event.waitUntil(self.registration.showNotification(`else: ${'navigate' in client}`, {isIphone}));
+            // event.notification.close();
+            // return clients.openWindow('/app');
+        }
+    }));
 }, false);

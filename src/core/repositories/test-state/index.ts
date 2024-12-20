@@ -5,7 +5,11 @@ export const testStateRepository = new TestStateRepository({
         test: null,
         activeQuestionIndex: 0,
         answers: {},
+        testResults: undefined,
+        mark: undefined,
+
         activeTests: [],
         resolvedTests: [],
+        isResolved: false,
     },
 });

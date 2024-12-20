@@ -10,6 +10,8 @@ type Props = {
     questionsCount: number;
     onQuestionClick: (index: number) => void;
     userAnswers: UserAnswers;
+    testResults?: Record<string, boolean | undefined>;
+    isResolved: boolean;
 };
 
 export const TestNavigationPanel: FC<Props> = ({
@@ -18,8 +20,12 @@ export const TestNavigationPanel: FC<Props> = ({
     questionsCount,
     onQuestionClick,
     userAnswers,
+    testResults,
+    isResolved,
 }) => {
     const progressBarPercent = (100 * activeQuestionIndex) / (questionsCount - 1);
+
+    console.log(testResults, 'testResults');
 
     return (
         <div className={s.testNavigationPanel}>
@@ -32,6 +38,11 @@ export const TestNavigationPanel: FC<Props> = ({
                     {Array(questionsCount)
                         .fill(null)
                         .map((q, i) => {
+                            const isAnswerRight =
+                                isResolved && testResults && testResults[questions[i].id];
+                            const isAnswerWrong =
+                                isResolved && (!testResults || !testResults[questions[i].id]);
+
                             return (
                                 <div
                                     className={classNames(
@@ -39,6 +50,8 @@ export const TestNavigationPanel: FC<Props> = ({
                                         i === activeQuestionIndex && s.active,
                                         userAnswers[questions[i].id]?.userAnswer !== undefined &&
                                             s.passed,
+                                        isAnswerRight && s.right,
+                                        isAnswerWrong && s.wrong,
                                     )}
                                     onClick={() => onQuestionClick(i)}
                                     key={i}

@@ -8,7 +8,7 @@ import {
     SubTest,
 } from 'tutor-online-global-shared';
 
-export type UserAnswers = Record<string, UserAnswer>;
+export type UserAnswers = UserAnswer;
 
 export type UserOmitAnswer =
     | ChoosingUserAnswers
@@ -20,7 +20,10 @@ export type TestState = {
     test: TestDto | null;
     activeQuestionIndex: number;
     answers: UserAnswers;
+    testResults: Record<string, boolean | undefined> | undefined;
+    mark: number | undefined;
 
     activeTests: SubTest[];
     resolvedTests: SubTest[];
+    isResolved: boolean;
 };

@@ -1,11 +1,11 @@
-import { UserService } from '@/core/services/user-state/types';
-import { Dependencies, Module } from '@/view/mobile/shared/lib/clear';
+import { UserStateService } from '@/core/services/user-state/types';
+import { Dependencies, Module } from '@/shared/clear';
 
-export interface CounterModuleDeps extends Dependencies {
-    userService: UserService;
+export interface UserModuleDeps extends Dependencies {
+    userService: UserStateService;
 }
 
-export class UserModule extends Module<CounterModuleDeps> {
+export class UserModule extends Module<UserModuleDeps> {
     getUser() {
         return this.$deps.userService.getUser();
     }

@@ -6,7 +6,7 @@ import {
     UserAnswer,
 } from 'tutor-online-global-shared';
 
-export type UserAnswers = Record<string, UserAnswer>;
+export type UserAnswers = UserAnswer
 
 export type UserOmitAnswer =
     | ChoosingUserAnswers

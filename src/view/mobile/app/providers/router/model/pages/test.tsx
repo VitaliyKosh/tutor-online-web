@@ -1,9 +1,9 @@
 import { TestPage } from '@/view/mobile/pages/test';
 import { ScreenLayoutProps } from '../types';
-import { TestPageFallback } from '@/view/mobile/pages/test/ui/fallback';
+import { TestPageFallbackGlobal } from '@/view/mobile/pages/test/ui/fallback';
 
 export const testPageLayoutProps: ScreenLayoutProps = {
     Page: TestPage,
-    Fallback: TestPageFallback,
+    Fallback: TestPageFallbackGlobal,
     dynamicHeader: true,
 };

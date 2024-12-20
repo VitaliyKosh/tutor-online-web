@@ -1,8 +1,8 @@
 import { ApiRepository } from './repository';
 
-import axios, { AxiosHeaders, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
-import { LocalStorageItems } from '@/view/mobile/shared/types/local-storage-items';
+import axios, { AxiosResponse } from 'axios';
 import { auth } from '@/core/app';
+import { ResponseInterceptorOptions } from '@/shared/clear/repositories/api/api-repository';
 import { CookieNames } from '../cookie/types';
 
 export const API_URL = import.meta.env.VITE_API_URL;
@@ -23,32 +23,38 @@ const $api = axios.create({
 //     return config;
 // });
 
-$api.interceptors.response.use(
+export const apiRepository = new ApiRepository({
+    axiosInstance: $api,
+    apiUrl: API_URL,
+});
+
+apiRepository.setResponseInterceptor(
     (config: AxiosResponse) => {
         return config;
     },
-    async (error) => {
+    async (error, options: ResponseInterceptorOptions) => {
         const originalRequest = error.config;
+        const data = JSON.parse(originalRequest.data);
 
-        if (error.response.status === 401 && error.config && !error.config._isRetry) {
-            originalRequest._isRetry = true;
+        if (error.response.status === 401 && data && !data._isRetry) {
+            originalRequest.data = {
+                ...data,
+                _isRetry: true,
+            };
 
             try {
-                console.log('error');
-                // document.cookie = `${CookieNames.RefreshToken}=John; max-age=0`;
-                await auth.checkAuth();
+                const isAuth = await auth.checkAuth({ isRetry: true });
 
-
-                return await $api.request(originalRequest);
-            } catch (e) {
-                console.log('Не авторизован');
+                if (isAuth) {
+                    return await $api.request(originalRequest);
+                } else {
+                    document.cookie = `${CookieNames.RefreshToken}=0; max-age=0`;
+                    document.cookie = `${CookieNames.AccessToken}=0; max-age=0`;
+                }
+            } catch {
+                options.onAuthError();
             }
         }
         throw error;
     },
 );
-
-export const apiRepository = new ApiRepository({
-    axiosInstance: $api,
-    apiUrl: API_URL,
-});

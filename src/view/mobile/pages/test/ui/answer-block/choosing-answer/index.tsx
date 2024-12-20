@@ -9,10 +9,15 @@ type Props = {
     setAnswer: (answer: UserOmitAnswer) => void;
     answers: Omit<ChoosingAnswers, 'rightAnswer'>;
     userAnswer: ChoosingUserAnswers | undefined;
+    isResolved: boolean;
 };
 
-export const ChoosingAnswer: FC<Props> = ({ setAnswer, answers, userAnswer }) => {
+export const ChoosingAnswer: FC<Props> = ({ setAnswer, answers, userAnswer, isResolved }) => {
     const handleAnswerSelected = (index: number) => {
+        if (isResolved) {
+            return;
+        }
+
         setAnswer({
             type: AnswerType.CHOOSING,
             userAnswer: index,
